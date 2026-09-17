@@ -1,4 +1,11 @@
-<title>Boligmatch</title>
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boligmatch — OT Bolig- &amp; Erhvervsudlejning</title>
+<meta name="description" content="Find dit næste lejemål i Trekantområdet. Seks trin, cirka et minut — så ved du præcis, hvor du står hos OT Bolig- &amp; Erhvervsudlejning.">
+<meta name="robots" content="index, follow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +63,11 @@
 }
 
 *{box-sizing:border-box}
+html{color-scheme:light dark}
+img{max-width:100%}
+[hidden]{display:none!important}
 body{
+  margin:0;
   background:var(--ground);
   color:var(--ink);
   font-family:var(--sans);
@@ -263,6 +274,8 @@ hr.sep{border:0;border-top:1px solid var(--line);margin:28px 0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.card:hover,.track:hover{transform:none}}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 </style>
+</head>
+<body>
 
 <!-- ============================================================
      KONFIGURATION
@@ -1059,3 +1072,6 @@ window.addEventListener("resize", meldHoejde);
 fyldTillid();
 render();
 </script>
+
+</body>
+</html>

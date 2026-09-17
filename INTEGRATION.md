@@ -1,7 +1,24 @@
 # Boligmatch — sådan lægges den på otbolig.dk
 
-Én fil: `boligmatch.html`. Ingen build, intet framework, ingen afhængigheder ud over
+Én fil: `index.html`. Ingen build, intet framework, ingen afhængigheder ud over
 Google Fonts. Virker i alle nyere browsere, på mobil og i både lys og mørk visning.
+
+---
+
+## 0. Se den live med det samme (GitHub Pages)
+
+Filen hedder `index.html` og ligger i roden af repoet, fordi GitHub Pages altid
+leder efter netop det filnavn på rod-URL'en. Derfor virker adressen:
+
+**https://jimhoeeg.github.io/OTbolig/**
+
+Er den ikke slået til endnu: **Settings → Pages → Build and deployment**, sæt
+*Source* til `Deploy from a branch`, vælg grenen `claude/blissful-hopper-nv1agw`
+og mappen `/ (root)`, og tryk **Save**. Første bygning tager et par minutter.
+
+Får du en 404 fra GitHub Pages, betyder det, at siden er slået til, men at filen
+ikke blev fundet på den adresse, du kaldte. Tjek at du rammer rod-URL'en ovenfor —
+og bemærk, at store og små bogstaver har betydning i `OTbolig`.
 
 ---
 
@@ -10,10 +27,10 @@ Google Fonts. Virker i alle nyere browsere, på mobil og i både lys og mørk vi
 ### A. Iframe — anbefalet
 
 Virker på Squarespace, WordPress, Wix og alt andet. Widgetens CSS kan ikke kollidere
-med sidens egen. Læg `boligmatch.html` op på serveren, og indsæt:
+med sidens egen. Læg `index.html` op på serveren, og indsæt:
 
 ```html
-<iframe src="/boligmatch.html" title="Boligmatch — find din bolig"
+<iframe src="/boligmatch/index.html" title="Boligmatch — find din bolig"
         style="width:100%;border:0;display:block" height="900"
         id="boligmatch-frame" loading="lazy"></iframe>
 
@@ -32,7 +49,7 @@ en scrollbar inde i iframen.
 
 ### B. Direkte på siden
 
-Kopiér hele indholdet af `boligmatch.html` ind i en HTML-blok på siden. Den arver
+Kopiér hele indholdet af `index.html` ind i en HTML-blok på siden. Den arver
 så sidens baggrundsfarve. Brug kun denne metode, hvis temaet ikke har aggressiv CSS
 på `button`, `input` og `fieldset`.
 
