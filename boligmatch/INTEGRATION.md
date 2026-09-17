@@ -99,16 +99,25 @@ stedet for en blind ende.
 
 ---
 
-## 4. Brandfarver
+## 4. Design
 
-Alle farver er variabler øverst i `<style>` under `:root`. Skift `--primary` til OT
-Boligs egen farve, så følger knapper, chips, ikoner og fremhævninger med. Husk at
-skifte den tilsvarende lysere variant i de to mørke blokke længere nede, så widgeten
-også holder i mørk visning.
+Widgeten følger otbolig.dk's egen linje:
 
-Skrifterne er Newsreader (overskrifter) og Libre Franklin (brødtekst). Skal sitets
-egne skrifter bruges i stedet, rettes `--serif` og `--sans` — og `<link>`-tagget til
-Google Fonts kan så fjernes.
+| Element | Værdi | Variabel |
+|---|---|---|
+| Accentfarve | `#1BA1DC` (logoets cyanblå) | `--primary` |
+| Struktur og bånd | `#000000` | `--black` |
+| Overskrifter | Playfair Display, bold | `--serif` |
+| Brødtekst | Lato Light, gråtonet | `--sans`, `--muted` |
+
+Alle farver er variabler øverst i `<style>` under `:root`. Rammer den blå ikke præcist
+logoets nuance, rettes `--primary` ét sted — så følger knapper, chips, ikoner, badges
+og fremhævninger med. Husk den lysere variant i de to mørke blokke længere nede, så
+widgeten også holder i mørk visning.
+
+Brødteksten er venstrestillet i selve flowet, selvom sitet centrerer sin brødtekst.
+Det er et bevidst valg: centreret tekst i en formular gør den markant sværere at
+udfylde. Overskrifter, resultatbeskeder og introen er centreret som på sitet.
 
 ---
 

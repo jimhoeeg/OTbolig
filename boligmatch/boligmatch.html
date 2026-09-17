@@ -2,59 +2,57 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;700&display=swap">
 
 <style>
 /* ============================================================
    BOLIGMATCH — OT Bolig- & Erhvervsudlejning
-   Selvstændig widget. Ingen afhængigheder ud over Google Fonts.
-   Skift brandfarver i :root nedenfor.
+   Designlinje matcher otbolig.dk: sort struktur, cyanblå accent,
+   Playfair Display til overskrifter, Lato til brødtekst.
+   Selvstændig widget uden afhængigheder ud over Google Fonts.
    ============================================================ */
 :root{
-  --ground:#F1F4F2;
+  --ground:#FFFFFF;
   --surface:#FFFFFF;
-  --surface-2:#F7F9F7;
-  --ink:#16221F;
-  --muted:#5D6D67;
-  --faint:#87948F;
-  --line:#DCE4E0;
-  --line-strong:#C3CFCA;
-  --primary:#0F3B33;
-  --primary-hover:#155048;
-  --primary-soft:#E2EDE8;
+  --surface-2:#F4F7F9;
+  --ink:#111111;
+  --muted:#8A9299;
+  --faint:#A6AEB3;
+  --line:#E4E8EB;
+  --line-strong:#CBD2D7;
+  --primary:#1BA1DC;
+  --primary-hover:#1487BC;
+  --primary-soft:#E7F5FC;
   --on-primary:#FFFFFF;
-  --brick:#9C4A2F;
-  --brick-soft:#F6E7E1;
-  --focus:#2E8B78;
-  --shadow:0 1px 2px rgba(22,34,31,.06), 0 8px 24px -12px rgba(22,34,31,.18);
-  --shadow-lift:0 2px 4px rgba(22,34,31,.07), 0 18px 40px -18px rgba(22,34,31,.28);
-  --r-sm:8px; --r-md:12px; --r-lg:18px;
-  --sans:"Libre Franklin",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --black:#000000;
+  --on-black:#FFFFFF;
+  --shadow:0 1px 2px rgba(17,17,17,.05), 0 10px 28px -14px rgba(17,17,17,.16);
+  --shadow-lift:0 2px 5px rgba(17,17,17,.07), 0 20px 44px -20px rgba(17,17,17,.26);
+  --r-sm:3px; --r-md:4px; --r-lg:5px;
+  --sans:"Lato",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --ground:#0E1412; --surface:#171F1C; --surface-2:#1D2724;
-    --ink:#E7EDEA; --muted:#A3B1AC; --faint:#7C8A85;
-    --line:#2A3531; --line-strong:#3A4843;
-    --primary:#63C3AC; --primary-hover:#7ED2BD; --primary-soft:#1B2E2A;
-    --on-primary:#0C1715;
-    --brick:#DE9277; --brick-soft:#2E211C;
-    --focus:#63C3AC;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
-    --shadow-lift:0 2px 4px rgba(0,0,0,.45), 0 18px 40px -18px rgba(0,0,0,.7);
+    --ground:#0B0D0E; --surface:#141719; --surface-2:#1B1F22;
+    --ink:#F2F4F5; --muted:#99A2A8; --faint:#798288;
+    --line:#282D31; --line-strong:#3A4147;
+    --primary:#45B7EA; --primary-hover:#65C6F0; --primary-soft:#112C3A;
+    --on-primary:#06181F;
+    --black:#000000; --on-black:#FFFFFF;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 28px -14px rgba(0,0,0,.7);
+    --shadow-lift:0 2px 5px rgba(0,0,0,.55), 0 20px 44px -20px rgba(0,0,0,.8);
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0E1412; --surface:#171F1C; --surface-2:#1D2724;
-  --ink:#E7EDEA; --muted:#A3B1AC; --faint:#7C8A85;
-  --line:#2A3531; --line-strong:#3A4843;
-  --primary:#63C3AC; --primary-hover:#7ED2BD; --primary-soft:#1B2E2A;
-  --on-primary:#0C1715;
-  --brick:#DE9277; --brick-soft:#2E211C;
-  --focus:#63C3AC;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
-  --shadow-lift:0 2px 4px rgba(0,0,0,.45), 0 18px 40px -18px rgba(0,0,0,.7);
+  --ground:#0B0D0E; --surface:#141719; --surface-2:#1B1F22;
+  --ink:#F2F4F5; --muted:#99A2A8; --faint:#798288;
+  --line:#282D31; --line-strong:#3A4147;
+  --primary:#45B7EA; --primary-hover:#65C6F0; --primary-soft:#112C3A;
+  --on-primary:#06181F;
+  --black:#000000; --on-black:#FFFFFF;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 28px -14px rgba(0,0,0,.7);
+  --shadow-lift:0 2px 5px rgba(0,0,0,.55), 0 20px 44px -20px rgba(0,0,0,.8);
 }
 
 *{box-sizing:border-box}
@@ -63,295 +61,206 @@ body{
   color:var(--ink);
   font-family:var(--sans);
   font-size:16px;
-  line-height:1.55;
+  font-weight:400;
+  line-height:1.75;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{
-  max-width:720px;
-  margin:0 auto;
-  padding-inline:16px;
-  padding-block:28px 40px;
-}
-.wrap.is-wide{max-width:920px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:24px 40px}
+.wrap.is-wide{max-width:980px}
 
-/* ---------- typografi ---------- */
-h1,h2,h3{margin:0;font-family:var(--serif);font-weight:500;text-wrap:balance;letter-spacing:-.01em}
-h1{font-size:clamp(1.65rem,1.2rem + 1.8vw,2.3rem);line-height:1.15}
-h2{font-size:clamp(1.35rem,1.1rem + 1.1vw,1.75rem);line-height:1.2}
-h3{font-size:1.06rem;line-height:1.3}
+/* ---------- typografi (otbolig.dk-linjen) ---------- */
+h1,h2,h3{margin:0;font-family:var(--serif);font-weight:700;color:var(--ink);text-wrap:balance;letter-spacing:0}
+h1{font-size:clamp(1.8rem,1.25rem + 2.1vw,2.6rem);line-height:1.2}
+h2{font-size:clamp(1.4rem,1.1rem + 1.3vw,1.95rem);line-height:1.25}
+h3{font-size:1.05rem;line-height:1.35;font-weight:600}
 p{margin:0}
 .eyebrow{
-  font-family:var(--sans);font-size:.7rem;font-weight:600;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--faint);
+  font-family:var(--sans);font-size:.72rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--primary);
 }
-.lede{color:var(--muted);font-size:1.02rem;max-width:56ch}
-.small{font-size:.855rem;color:var(--muted)}
-.tiny{font-size:.78rem;color:var(--faint)}
+.eyebrow.is-quiet{color:var(--faint);letter-spacing:.18em}
+.lede{color:var(--muted);font-weight:300;font-size:1.05rem;line-height:1.7;max-width:60ch}
+.small{font-size:.86rem;color:var(--muted);font-weight:300;line-height:1.65}
+.tiny{font-size:.78rem;color:var(--faint);line-height:1.6}
 .num{font-variant-numeric:tabular-nums}
+.center{text-align:center}
+.center .lede{margin-inline:auto}
 
 /* ---------- panel ---------- */
-.panel{
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--r-lg);
-  box-shadow:var(--shadow);
-  overflow:hidden;
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden}
+.panel-body{padding:clamp(22px,4.5vw,40px)}
+.bar{
+  background:var(--black);color:var(--on-black);
+  padding:11px clamp(20px,4vw,34px);
+  font-size:.68rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
 }
-.panel-body{padding:clamp(20px,4vw,34px)}
+.bar span:last-child{color:#9AA3A8;letter-spacing:.14em;font-weight:400}
 
 /* ---------- progress ---------- */
-.progress{display:flex;align-items:center;gap:14px;padding:14px clamp(20px,4vw,34px);border-bottom:1px solid var(--line);background:var(--surface-2)}
-.progress-track{flex:1;height:4px;border-radius:99px;background:var(--line-strong);overflow:hidden}
-.progress-fill{height:100%;background:var(--primary);border-radius:99px;transition:width .35s cubic-bezier(.4,0,.2,1)}
-.progress-label{font-size:.76rem;font-weight:600;color:var(--muted);letter-spacing:.04em;white-space:nowrap;font-variant-numeric:tabular-nums}
-.btn-back{
-  background:none;border:none;padding:6px;margin:-6px 0 -6px -6px;cursor:pointer;color:var(--muted);
-  border-radius:var(--r-sm);display:inline-flex;align-items:center;gap:5px;font:inherit;font-size:.8rem;font-weight:500;
-}
-.btn-back:hover{color:var(--ink);background:var(--surface)}
+.progress{display:flex;align-items:center;gap:14px;padding:13px clamp(20px,4vw,34px);border-bottom:1px solid var(--line);background:var(--surface-2)}
+.progress-track{flex:1;height:3px;background:var(--line-strong);overflow:hidden}
+.progress-fill{height:100%;background:var(--primary);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.progress-label{font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.btn-back{background:none;border:none;padding:6px;margin:-6px 0 -6px -6px;cursor:pointer;color:var(--muted);display:inline-flex;align-items:center;gap:5px;font:inherit;font-size:.78rem;font-weight:700;letter-spacing:.06em}
+.btn-back:hover{color:var(--primary)}
 
 /* ---------- intro ---------- */
-.intro-head{display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
-.intro-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
-.pill{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.78rem;font-weight:500;color:var(--muted);
-  background:var(--surface-2);border:1px solid var(--line);
-  padding:5px 11px;border-radius:99px;
-}
+.intro-head{display:flex;flex-direction:column;gap:14px;margin-bottom:30px;align-items:center;text-align:center}
+.intro-meta{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:4px}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;font-weight:400;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);padding:6px 13px;border-radius:99px}
 .pill svg{flex:none;color:var(--primary)}
-.pill.is-live{background:var(--brick-soft);border-color:transparent;color:var(--brick);font-weight:600}
-.dot-live{width:6px;height:6px;border-radius:99px;background:currentColor;flex:none}
+.pill.is-live{background:var(--primary-soft);border-color:transparent;color:var(--primary-hover);font-weight:700}
+.dot-live{width:6px;height:6px;border-radius:99px;background:var(--primary);flex:none}
 
-.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media (max-width:540px){.split{grid-template-columns:1fr}}
-.track{
-  text-align:left;cursor:pointer;font:inherit;
-  background:var(--surface);border:1.5px solid var(--line-strong);border-radius:var(--r-md);
-  padding:20px;display:flex;flex-direction:column;gap:7px;
-  transition:border-color .16s,box-shadow .16s,transform .16s;
-}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.split{grid-template-columns:1fr}}
+.track{text-align:left;cursor:pointer;font:inherit;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-md);padding:24px;display:flex;flex-direction:column;gap:8px;transition:border-color .18s,box-shadow .18s,transform .18s}
 .track:hover{border-color:var(--primary);box-shadow:var(--shadow-lift);transform:translateY(-2px)}
-.track-icon{color:var(--primary);margin-bottom:3px}
-.track-title{font-family:var(--serif);font-size:1.22rem;font-weight:500}
-.track-sub{font-size:.855rem;color:var(--muted);line-height:1.45}
-.track-cta{font-size:.8rem;font-weight:600;color:var(--primary);margin-top:5px}
+.track-icon{color:var(--primary);margin-bottom:4px}
+.track-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;line-height:1.25}
+.track-sub{font-size:.875rem;color:var(--muted);font-weight:300;line-height:1.65}
+.track-cta{font-size:.74rem;font-weight:700;color:var(--primary);margin-top:7px;letter-spacing:.14em;text-transform:uppercase}
 
-/* ---------- spørgsmål ---------- */
+/* ---------- spoergsmaal ---------- */
 fieldset{border:0;margin:0;padding:0;min-width:0}
 legend{padding:0;display:block}
-.q-head{margin-bottom:6px}
-.q-help{color:var(--muted);font-size:.9rem;margin-bottom:20px;max-width:52ch}
+.q-head{margin-bottom:8px}
+.q-help{color:var(--muted);font-weight:300;font-size:.93rem;margin-bottom:24px;max-width:56ch}
 .chips{display:flex;flex-wrap:wrap;gap:9px}
-.chip{
-  font:inherit;font-size:.92rem;font-weight:500;cursor:pointer;
-  background:var(--surface);color:var(--ink);
-  border:1.5px solid var(--line-strong);border-radius:99px;
-  padding:9px 17px;transition:all .14s;
-  display:inline-flex;align-items:center;gap:7px;
-}
+.chip{font:inherit;font-size:.9rem;font-weight:400;cursor:pointer;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:10px 17px;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
 .chip:hover{border-color:var(--primary);color:var(--primary)}
-.chip[aria-pressed="true"],.chip.is-on{
-  background:var(--primary);border-color:var(--primary);color:var(--on-primary);
-}
+.chip[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:var(--on-primary);font-weight:700}
 .chip[aria-pressed="true"] .chip-check{opacity:1;width:14px}
-.chip-check{opacity:0;width:0;overflow:hidden;transition:.14s;flex:none}
+.chip-check{opacity:0;width:0;overflow:hidden;transition:.15s;flex:none}
 .chip:disabled{opacity:.4;cursor:not-allowed}
-.chip.is-wide{border-radius:var(--r-md);padding:13px 17px;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;flex:1 1 150px}
-.chip.is-wide .chip-note{font-size:.78rem;font-weight:400;color:var(--muted)}
-.chip.is-wide[aria-pressed="true"] .chip-note{color:var(--on-primary);opacity:.8}
-
-.subq{margin-bottom:22px}
+.subq{margin-bottom:24px}
 .subq:last-of-type{margin-bottom:0}
-.subq-label{font-size:.9rem;font-weight:600;margin-bottom:9px;display:block}
+.subq-label{font-size:.88rem;font-weight:700;margin-bottom:10px;display:block}
 
 /* ---------- budget ---------- */
-.budget-readout{
-  display:flex;align-items:baseline;gap:9px;margin-bottom:4px;flex-wrap:wrap;
-}
-.budget-value{font-family:var(--serif);font-size:2.4rem;font-weight:500;font-variant-numeric:tabular-nums;line-height:1}
-.budget-unit{color:var(--muted);font-size:.95rem}
-input[type="range"]{
-  -webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin:14px 0 6px;
-}
-input[type="range"]::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:var(--line-strong)}
-input[type="range"]::-moz-range-track{height:6px;border-radius:99px;background:var(--line-strong)}
-input[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance:none;width:26px;height:26px;border-radius:99px;background:var(--primary);
-  border:4px solid var(--surface);box-shadow:var(--shadow);margin-top:-10px;
-}
-input[type="range"]::-moz-range-thumb{
-  width:26px;height:26px;border-radius:99px;background:var(--primary);
-  border:4px solid var(--surface);box-shadow:var(--shadow);
-}
+.budget-readout{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.budget-value{font-family:var(--serif);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.budget-unit{color:var(--muted);font-weight:300;font-size:.95rem}
+input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin:16px 0 6px}
+input[type="range"]::-webkit-slider-runnable-track{height:3px;background:var(--line-strong)}
+input[type="range"]::-moz-range-track{height:3px;background:var(--line-strong)}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:99px;background:var(--primary);border:4px solid var(--surface);box-shadow:var(--shadow);margin-top:-10.5px}
+input[type="range"]::-moz-range-thumb{width:24px;height:24px;border-radius:99px;background:var(--primary);border:4px solid var(--surface);box-shadow:var(--shadow)}
 .range-ends{display:flex;justify-content:space-between;font-size:.78rem;color:var(--faint);font-variant-numeric:tabular-nums}
 
 /* ---------- felter ---------- */
 .field{margin-bottom:16px}
-.field label{display:block;font-size:.875rem;font-weight:600;margin-bottom:6px}
-.field input,.field textarea{
-  width:100%;font:inherit;font-size:1rem;color:var(--ink);
-  background:var(--surface-2);border:1.5px solid var(--line-strong);border-radius:var(--r-sm);
-  padding:11px 13px;transition:border-color .14s,background .14s;
-}
+.field label{display:block;font-size:.84rem;font-weight:700;margin-bottom:7px;letter-spacing:.02em}
+.field input,.field textarea{width:100%;font:inherit;font-size:1rem;font-weight:400;color:var(--ink);background:var(--surface-2);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:12px 14px;transition:border-color .15s,background .15s}
 .field input:focus,.field textarea:focus{background:var(--surface);border-color:var(--primary);outline:none}
-.field textarea{resize:vertical;min-height:84px}
+.field textarea{resize:vertical;min-height:88px;font-weight:300}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media (max-width:540px){.field-row{grid-template-columns:1fr}}
-.field-err{color:var(--brick);font-size:.8rem;font-weight:500;margin-top:5px}
+@media (max-width:560px){.field-row{grid-template-columns:1fr}}
+.field-err{color:#C62828;font-size:.82rem;font-weight:700;margin-top:6px}
 
 /* ---------- knapper ---------- */
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;align-items:center}
-.btn{
-  font:inherit;font-size:.95rem;font-weight:600;cursor:pointer;
-  border-radius:var(--r-sm);padding:13px 24px;border:1.5px solid transparent;
-  transition:all .15s;display:inline-flex;align-items:center;gap:8px;justify-content:center;
-}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;align-items:center}
+.btn{font:inherit;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:var(--r-sm);padding:15px 28px;border:1px solid transparent;transition:all .16s;display:inline-flex;align-items:center;gap:8px;justify-content:center}
 .btn-primary{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
 .btn-primary:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
-.btn-primary:disabled{opacity:.42;cursor:not-allowed;background:var(--primary)}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;background:var(--primary)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
-.btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
-.btn-text{background:none;border:none;color:var(--primary);font-weight:600;cursor:pointer;font:inherit;font-size:.9rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:6px}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-text{background:none;border:none;color:var(--primary);cursor:pointer;font:inherit;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px}
 .btn-block{width:100%}
-
-:where(button,input,a,[tabindex]):focus-visible{outline:2.5px solid var(--focus);outline-offset:2px;border-radius:var(--r-sm)}
+:where(button,input,a,[tabindex]):focus-visible{outline:2px solid var(--primary);outline-offset:3px}
 
 /* ---------- resultat ---------- */
-.verdict{
-  border-radius:var(--r-md);padding:20px;margin-bottom:22px;
-  border:1px solid var(--line);background:var(--surface-2);
-}
+.verdict{border-radius:var(--r-md);padding:24px;margin-bottom:24px;border:1px solid var(--line);background:var(--surface-2);text-align:center}
 .verdict.is-hit{background:var(--primary-soft);border-color:transparent}
-.verdict h2{margin-bottom:7px}
-.verdict p{color:var(--muted);font-size:.94rem;max-width:56ch}
-.verdict.is-hit p{color:var(--ink);opacity:.82}
+.verdict h2{margin-bottom:9px}
+.verdict p{color:var(--muted);font-weight:300;font-size:.96rem;max-width:58ch;margin-inline:auto}
+.verdict.is-hit p{color:var(--ink);opacity:.72}
+.queue{display:flex;align-items:center;gap:16px;margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:15px 18px;text-align:left;max-width:520px;margin-inline:auto}
+.queue-no{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1;color:var(--primary);font-variant-numeric:tabular-nums;flex:none}
+.queue-txt{font-size:.85rem;font-weight:300;line-height:1.6}
+.queue-txt strong{font-weight:700}
 
-.queue{
-  display:flex;align-items:center;gap:14px;margin-top:16px;
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 16px;
-}
-.queue-no{
-  font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1;color:var(--primary);
-  font-variant-numeric:tabular-nums;flex:none;
-}
-.queue-txt{font-size:.85rem;line-height:1.4}
-.queue-txt strong{font-weight:600}
-
-.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
-.card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
-  overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .18s,transform .18s;
-}
+.cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(296px,1fr))}
+.cards.is-one{grid-template-columns:minmax(0,1fr);max-width:352px;margin-inline:auto}
+.cards.is-two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:680px;margin-inline:auto}
+@media (max-width:640px){.cards.is-two{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
 .card:hover{box-shadow:var(--shadow-lift);transform:translateY(-2px)}
-.card-media{position:relative;aspect-ratio:16/10;max-width:100%;background:var(--surface-2);overflow:hidden}
+.card-media{position:relative;aspect-ratio:3/2;max-width:100%;background:var(--surface-2);overflow:hidden}
 .card-media img{width:100%;height:100%;object-fit:cover;display:block}
 .card-media svg{width:100%;height:100%;display:block}
-.badge{
-  position:absolute;top:11px;left:11px;z-index:2;
-  font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  background:var(--brick);color:#fff;padding:5px 10px;border-radius:99px;
-}
-.badge.is-soon{background:var(--primary);color:var(--on-primary)}
-.card-body{padding:16px;display:flex;flex-direction:column;gap:11px;flex:1}
+.badge{position:absolute;top:0;left:0;z-index:2;font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--primary);color:var(--on-primary);padding:7px 13px}
+.badge.is-soon{background:var(--black);color:var(--on-black)}
+.card-body{padding:18px;display:flex;flex-direction:column;gap:12px;flex:1}
 .card-top{display:flex;flex-direction:column;gap:3px}
-.card-addr{font-size:.78rem;color:var(--faint)}
+.card-addr{font-size:.78rem;color:var(--faint);font-weight:300}
 .card-specs{display:flex;flex-wrap:wrap;gap:6px}
-.spec{font-size:.75rem;font-weight:500;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);padding:3px 9px;border-radius:99px}
+.spec{font-size:.73rem;font-weight:400;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);padding:4px 10px}
 
-/* økonomiboks */
-.econ{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;font-variant-numeric:tabular-nums}
-.econ-sec{padding:11px 13px}
+.econ{border:1px solid var(--line);overflow:hidden;font-variant-numeric:tabular-nums}
+.econ-sec{padding:12px 14px}
 .econ-sec + .econ-sec{border-top:1px solid var(--line);background:var(--surface-2)}
-.econ-row{display:flex;justify-content:space-between;gap:12px;font-size:.83rem;color:var(--muted);padding:2px 0}
-.econ-row.is-total{font-size:.95rem;font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:7px;padding-top:8px}
-.econ-cap{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+.econ-row{display:flex;justify-content:space-between;gap:12px;font-size:.82rem;font-weight:300;color:var(--muted);padding:2px 0}
+.econ-row.is-total{font-size:.94rem;font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:8px;padding-top:9px}
+.econ-cap{font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
 
-.alt-head{margin:30px 0 14px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.alt-head h3{font-family:var(--sans);font-size:.95rem;font-weight:700}
+.alt-head{margin:34px 0 16px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;justify-content:center;text-align:center}
+.alt-head h3{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
 
 /* ---------- tillid ---------- */
-.trust{
-  margin-top:18px;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-lg);padding:20px clamp(18px,3.5vw,26px);
-}
-.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px 22px;margin-top:14px}
-.trust-item{display:flex;gap:11px;align-items:flex-start}
-.trust-item svg{flex:none;color:var(--primary);margin-top:2px}
-.trust-item strong{display:block;font-size:.875rem;font-weight:600;margin-bottom:2px}
-.trust-item span{font-size:.815rem;color:var(--muted);line-height:1.45}
+.trust{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px clamp(20px,4vw,38px)}
+.trust > .eyebrow{display:block;text-align:center}
+.trust-claim{font-family:var(--serif);font-size:1.25rem;font-weight:700;text-align:center;margin-top:8px}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(222px,1fr));gap:20px 26px;margin-top:24px}
+.trust-item{display:flex;gap:12px;align-items:flex-start}
+.trust-item svg{flex:none;color:var(--primary);margin-top:3px}
+.trust-item strong{display:block;font-size:.87rem;font-weight:700;margin-bottom:3px;line-height:1.4}
+.trust-item span{font-size:.815rem;color:var(--muted);font-weight:300;line-height:1.6}
 
-.safety{
-  border:1.5px solid var(--primary);background:var(--primary-soft);
-  border-radius:var(--r-md);padding:16px 18px;margin:22px 0;
-  display:flex;gap:12px;align-items:flex-start;
-}
-.safety svg{flex:none;color:var(--primary);margin-top:1px}
-.safety strong{display:block;font-size:.88rem;font-weight:700;margin-bottom:4px}
-.safety p{font-size:.835rem;line-height:1.5;color:var(--ink);opacity:.85}
+.safety{border:1px solid var(--primary);background:var(--primary-soft);border-radius:var(--r-md);padding:18px 20px;margin:26px 0;display:flex;gap:13px;align-items:flex-start;text-align:left}
+.safety svg{flex:none;color:var(--primary);margin-top:2px}
+.safety strong{display:block;font-size:.87rem;font-weight:700;margin-bottom:5px}
+.safety p{font-size:.83rem;font-weight:300;line-height:1.65;color:var(--ink);opacity:.8}
 
 /* ---------- personer ---------- */
-.people{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
-.person{
-  display:flex;align-items:center;gap:12px;flex:1 1 235px;
-  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;
-}
-.avatar{
-  width:46px;height:46px;border-radius:99px;flex:none;overflow:hidden;
-  background:var(--primary);color:var(--on-primary);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.02em;
-}
+.people{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.person{display:flex;align-items:center;gap:14px;flex:1 1 240px;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px}
+.person > span:last-child{display:flex;flex-direction:column;min-width:0}
+.avatar{width:48px;height:48px;border-radius:99px;flex:none;overflow:hidden;background:var(--black);color:var(--on-black);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.05rem;font-weight:700}
 .avatar img{width:100%;height:100%;object-fit:cover}
 .person-name,.person-role{display:block}
-.person > span:last-child{display:flex;flex-direction:column;min-width:0}
-.person-name{font-size:.88rem;font-weight:600;line-height:1.25}
-.person-role{font-size:.775rem;color:var(--muted);margin-bottom:2px}
-.person a{font-size:.82rem;color:var(--primary);font-weight:600;text-decoration:none;margin-top:2px}
-.person a:hover{text-decoration:underline;text-underline-offset:2px}
+.person-name{font-size:.89rem;font-weight:700;line-height:1.3}
+.person-role{font-size:.755rem;color:var(--muted);font-weight:300;letter-spacing:.04em}
+.person a{font-size:.85rem;color:var(--primary);font-weight:700;text-decoration:none;margin-top:3px}
+.person a:hover{text-decoration:underline;text-underline-offset:3px}
 
-/* ---------- næste skridt ---------- */
-.steps3{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:16px;counter-reset:s}
-.step3{display:flex;gap:11px;align-items:flex-start;counter-increment:s}
-.step3::before{
-  content:counter(s);flex:none;width:25px;height:25px;border-radius:99px;
-  background:var(--primary);color:var(--on-primary);
-  font-size:.76rem;font-weight:700;display:flex;align-items:center;justify-content:center;
-}
-.step3 strong{display:block;font-size:.865rem;font-weight:600}
-.step3 span{font-size:.8rem;color:var(--muted);line-height:1.42}
+/* ---------- naeste skridt ---------- */
+.steps3{display:grid;grid-template-columns:repeat(auto-fit,minmax(186px,1fr));gap:18px;margin-top:20px;counter-reset:s}
+.step3{display:flex;gap:12px;align-items:flex-start;counter-increment:s}
+.step3::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:99px;background:var(--primary);color:var(--on-primary);font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.step3 strong{display:block;font-size:.86rem;font-weight:700}
+.step3 span{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.6}
 
 /* ---------- kvittering ---------- */
-.done{text-align:center;padding:14px 0 6px}
-.done-mark{
-  width:62px;height:62px;border-radius:99px;background:var(--primary-soft);color:var(--primary);
-  display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
-}
-.summary{
-  text-align:left;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-md);
-  padding:16px 18px;margin:22px 0;
-}
-.summary dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 16px;font-size:.85rem}
+.done{text-align:center;padding:16px 0 6px}
+.done-mark{width:64px;height:64px;border-radius:99px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.summary{text-align:left;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;margin:26px auto;max-width:440px}
+.summary dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:.85rem;font-weight:300}
 .summary dt{color:var(--muted)}
-.summary dd{margin:0;font-weight:500;text-align:right}
+.summary dd{margin:0;font-weight:700;text-align:right}
 
 /* ---------- diverse ---------- */
-.demo-note{
-  background:var(--brick-soft);color:var(--brick);border-radius:var(--r-sm);
-  padding:9px 13px;font-size:.78rem;font-weight:600;margin-bottom:14px;
-  display:flex;gap:8px;align-items:center;line-height:1.4;
-}
-.consent{display:flex;gap:10px;align-items:flex-start;margin-top:4px;font-size:.8rem;color:var(--muted);line-height:1.45}
-.consent input{margin-top:3px;width:17px;height:17px;flex:none;accent-color:var(--primary)}
-.foot{margin-top:16px;text-align:center}
-hr.sep{border:0;border-top:1px solid var(--line);margin:26px 0}
-
+.demo-note{background:var(--black);color:var(--on-black);border-radius:var(--r-sm);padding:11px 15px;font-size:.74rem;font-weight:400;letter-spacing:.03em;margin-bottom:16px;display:flex;gap:9px;align-items:center;line-height:1.55}
+.demo-note svg{flex:none;color:var(--primary)}
+.consent{display:flex;gap:11px;align-items:flex-start;margin-top:6px;font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.6}
+.consent input{margin-top:4px;width:17px;height:17px;flex:none;accent-color:var(--primary)}
+.foot{margin-top:18px;text-align:center}
+hr.sep{border:0;border-top:1px solid var(--line);margin:28px 0}
 .fade{animation:fade .3s cubic-bezier(.2,0,.2,1) both}
 @keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  .card:hover,.track:hover{transform:none}
-}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.card:hover,.track:hover{transform:none}}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 </style>
 
@@ -407,60 +316,65 @@ const CONFIG = {
    en neutral facade-illustration automatisk.
    depositumMdr / forudbetaltMdr styrer indflytningsregnestykket. */
 const BOLIGER = [
-  { id:"kol-99", by:"Kolding", adresse:"Sct. Jørgens Gade 14, 2. th.",
-    vaerelser:4, m2:99, husleje:8950, aconto:1150, depositumMdr:3, forudbetaltMdr:1,
-    ledig:"1. november", features:["altan","elevator","p-plads","nyrenoveret"],
-    beskrivelse:"Gennemrenoveret lejlighed tæt på gågaden. Egen altan mod gården.", billede:"" },
+  { id:"kol-107", by:"Kolding", adresse:"", vaerelser:4, m2:107,
+    husleje:9200, aconto:1150, depositumMdr:3, forudbetaltMdr:1, ledig:"1. november",
+    features:["p-plads","vaskemaskine"],
+    beskrivelse:"Stor 4-værelses lejlighed med separat køkken og god plads til hele familien.", billede:"" },
 
-  { id:"kol-52", by:"Kolding", adresse:"Låsbygade 41, 1. tv.",
-    vaerelser:2, m2:52, husleje:5650, aconto:780, depositumMdr:3, forudbetaltMdr:1,
-    ledig:"Straks", features:["vaskemaskine","tæt på station"],
-    beskrivelse:"Lys 2-værelses med plads til egen vaskemaskine. 6 min. til stationen.", billede:"" },
+  { id:"kol-99", by:"Kolding", adresse:"", vaerelser:4, m2:99,
+    husleje:8700, aconto:1100, depositumMdr:3, forudbetaltMdr:1, ledig:"Straks",
+    features:["nyrenoveret","vaskemaskine"],
+    beskrivelse:"Lys 4-værelses med nyere køkken og trægulve i hele lejligheden.", billede:"" },
 
-  { id:"kol-49", by:"Kolding", adresse:"Haderslevvej 88, st.",
-    vaerelser:2, m2:49, husleje:5200, aconto:720, depositumMdr:3, forudbetaltMdr:1,
-    ledig:"15. oktober", features:["have","husdyr","p-plads"],
-    beskrivelse:"Stuelejlighed med egen terrasse og lille have. Husdyr tilladt.", billede:"" },
+  { id:"kol-66", by:"Kolding", adresse:"", vaerelser:3, m2:66,
+    husleje:6900, aconto:900, depositumMdr:3, forudbetaltMdr:1, ledig:"1. november",
+    features:["nyrenoveret"],
+    beskrivelse:"Hyggelig 3-værelses på øverste etage med skråvægge og ovenlys.", billede:"" },
 
-  { id:"vej-76", by:"Vejle", adresse:"Dæmningen 22, 3. th.",
-    vaerelser:3, m2:76, husleje:7400, aconto:940, depositumMdr:3, forudbetaltMdr:1,
-    ledig:"1. december", features:["altan","elevator","tæt på station"],
-    beskrivelse:"3-værelses med altan og udsigt over fjorden. Elevator i opgangen.", billede:"" },
+  { id:"kol-22", by:"Kolding", adresse:"", vaerelser:1, m2:22,
+    husleje:3600, aconto:600, depositumMdr:3, forudbetaltMdr:1, ledig:"Straks",
+    features:["tæt på station"],
+    beskrivelse:"Fin lille 1-værelses — velegnet til studerende eller som pendlerbolig.", billede:"" },
 
-  { id:"gri-64", by:"Grindsted", adresse:"Borgergade 9, 1. tv.",
-    vaerelser:3, m2:64, husleje:5300, aconto:810, depositumMdr:3, forudbetaltMdr:1,
-    ledig:"Straks", features:["p-plads","lav varmeudgift","nyrenoveret"],
-    beskrivelse:"Nyistandsat lejlighed midt i Grindsted. Nye vinduer og lave varmeudgifter.", billede:"" },
+  { id:"vej-51", by:"Vejle", adresse:"", vaerelser:2, m2:51,
+    husleje:6100, aconto:800, depositumMdr:3, forudbetaltMdr:1, ledig:"1. december",
+    features:["altan","p-plads"],
+    beskrivelse:"2-værelses med stor altan og fantastisk udsigt over ådalen.", billede:"" },
 
-  { id:"bil-58", by:"Billund", adresse:"Hans Jensensvej 4, st. th.",
-    vaerelser:2, m2:58, husleje:5900, aconto:800, depositumMdr:3, forudbetaltMdr:1,
-    ledig:"1. november", features:["p-plads","have","vaskemaskine"],
-    beskrivelse:"Rolig stuelejlighed med have. Kort afstand til Legoland og lufthavnen.", billede:"" },
+  { id:"vej-43", by:"Vejle", adresse:"", vaerelser:2, m2:43,
+    husleje:4900, aconto:720, depositumMdr:3, forudbetaltMdr:1, ledig:"Straks",
+    features:["altan","have","p-plads"],
+    beskrivelse:"2-værelses i rolig ejendom med altan og fælles grønt område.", billede:"" },
 
-  { id:"chr-71", by:"Christiansfeld", adresse:"Lindegade 31, 1. sal",
-    vaerelser:3, m2:71, husleje:5750, aconto:870, depositumMdr:3, forudbetaltMdr:1,
-    ledig:"1. januar", features:["husdyr","p-plads","lav varmeudgift"],
-    beskrivelse:"Charmerende lejlighed i den historiske bykerne. Husdyr efter aftale.", billede:"" }
+  { id:"chr-90", by:"Christiansfeld", adresse:"", vaerelser:3, m2:90,
+    husleje:6400, aconto:900, depositumMdr:3, forudbetaltMdr:1, ledig:"1. december",
+    features:["have","p-plads","husdyr"],
+    beskrivelse:"Rummelig 3-værelses i ældre ejendom med egen have og god parkering.", billede:"" },
+
+  { id:"ges-84", by:"Gesten", adresse:"", vaerelser:3, m2:84,
+    husleje:5800, aconto:850, depositumMdr:3, forudbetaltMdr:1, ledig:"1. januar",
+    features:["have","p-plads","lav varmeudgift"],
+    beskrivelse:"3-værelses i klassisk rødstensejendom midt i Gesten. Rolige omgivelser.", billede:"" }
 ];
 
 /* ---------- LEDIGE ERHVERVSLEJEMÅL ---------- */
 const ERHVERV = [
-  { id:"e-kol-kontor", by:"Kolding", adresse:"Jernbanegade 27", kategori:"kontor",
+  { id:"e-kol-kontor", by:"Kolding", kategori:"kontor", adresse:"",
     m2:120, maanedligLeje:11500, drift:1800, ledig:"Straks",
     features:["parkering","kundeadgang","kontorpladser"],
     beskrivelse:"Lyse kontorlokaler i House of Innovation. 8-10 arbejdspladser, fælles mødefaciliteter.", billede:"" },
 
-  { id:"e-kol-butik", by:"Kolding", adresse:"Søndergade 12", kategori:"butik",
+  { id:"e-kol-butik", by:"Kolding", kategori:"butik", adresse:"",
     m2:85, maanedligLeje:9800, drift:1400, ledig:"1. december",
     features:["facade","kundeadgang","parkering"],
     beskrivelse:"Butikslokale med stor facade mod gågaden. Eget lager bagved.", billede:"" },
 
-  { id:"e-gri-lager", by:"Grindsted", adresse:"Industrivej 7", kategori:"lager",
+  { id:"e-gri-lager", by:"Grindsted", kategori:"lager", adresse:"",
     m2:420, maanedligLeje:14200, drift:2100, ledig:"Straks",
     features:["port","højloft","parkering","3-faset"],
     beskrivelse:"Lagerhal med port i terrænniveau og 5,5 m til loft. God tilkørsel.", billede:"" },
 
-  { id:"e-vej-vaerksted", by:"Vejle", adresse:"Havnegade 40", kategori:"vaerksted",
+  { id:"e-vej-vaerksted", by:"Vejle", kategori:"vaerksted", adresse:"",
     m2:180, maanedligLeje:8900, drift:1600, ledig:"1. november",
     features:["port","3-faset","parkering"],
     beskrivelse:"Værkstedslokale med port, 3-faset strøm og plads til to lifte.", billede:"" }
@@ -474,6 +388,7 @@ const ERHVERV = [
   <!-- Tillidsbjælken er ALTID synlig, uanset hvor man er i flowet -->
   <section class="trust" aria-labelledby="trust-h">
     <p class="eyebrow" id="trust-h">Derfor kan du regne med os</p>
+    <p class="trust-claim">&bdquo;Det skal være nemt at være lejer hos os.&ldquo;</p>
     <div class="trust-grid">
       <div class="trust-item">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
@@ -527,6 +442,7 @@ const FEATURE_LABEL = {
 };
 const KAT_LABEL = { kontor:"Kontor", butik:"Butik", lager:"Lager", vaerksted:"Værksted", klinik:"Klinik", showroom:"Showroom" };
 
+const kortGitter = n => n === 1 ? " is-one" : n === 2 ? " is-two" : "";
 const kr = n => new Intl.NumberFormat("da-DK").format(Math.round(n)) + " kr.";
 const vaerelsesTekst = v => ({1:"1–2",2:"2–3",3:"3–4",4:"4+"})[v] || "";
 
@@ -667,7 +583,7 @@ function render(){
 
 function demoBjaelke(){
   return CONFIG.demo
-    ? `<div class="demo-note">${ICON.info}<span>Demodata: boliger, ventelistetal og priser er eksempler. Udskiftes med OT Boligs egne tal før lancering.</span></div>`
+    ? `<div class="demo-note">${ICON.info}<span>Lejemålene er OT Boligs faktiske ledige lejligheder. Huslejer, ventelistetal og datoer er pladsholdere, der udskiftes med de rigtige tal før lancering.</span></div>`
     : "";
 }
 
@@ -675,10 +591,12 @@ function viewIntro(){
   const ledige = BOLIGER.length + ERHVERV.length;
   return `
   ${demoBjaelke()}
-  <div class="panel fade"><div class="panel-body">
+  <div class="panel fade">
+    <div class="bar"><span>Boligmatch</span><span>OT Bolig- &amp; Erhvervsudlejning</span></div>
+    <div class="panel-body">
     <div class="intro-head">
-      <p class="eyebrow">Boligmatch</p>
-      <h1 data-focus>Find din næste bolig i Trekantområdet</h1>
+      <p class="eyebrow">Lejligheder &amp; erhvervslejemål i Kolding, Vejle, Haderslev, Billund &amp; Grindsted</p>
+      <h1 data-focus>Find dit næste lejemål i Trekantområdet</h1>
       <p class="lede">Seks trin, cirka et minut — så ved du præcis, hvor du står hos os. Også hvis svaret er, at vi ikke har noget til dig lige nu.</p>
       <div class="intro-meta">
         <span class="pill is-live"><span class="dot-live"></span>${ledige} ledige ud af ${CONFIG.totalLejemaal} lejemål lige nu</span>
@@ -826,11 +744,11 @@ function viewResultat(){
     </div>
     <div class="panel-body">
       ${dom}
-      ${primaere.length ? `<div class="cards">${primaere.map(x=>kort(x.b, erErhverv, true)).join("")}</div>` : ""}
+      ${primaere.length ? `<div class="cards${kortGitter(primaere.length)}">${primaere.map(x=>kort(x.b, erErhverv, true)).join("")}</div>` : ""}
       ${alt.length ? `
         <div class="alt-head"><h3>${fuldeMatch.length ? "Måske også noget for dig" : "Det tætteste vi har"}</h3>
         <span class="tiny">Afviger på ét eller to punkter</span></div>
-        <div class="cards">${alt.map(x=>kort(x.b, erErhverv, false)).join("")}</div>` : ""}
+        <div class="cards${kortGitter(alt.length)}">${alt.map(x=>kort(x.b, erErhverv, false)).join("")}</div>` : ""}
 
       <div class="safety">${ICON.skjold}<div>
         <strong>Sådan gør vi aldrig</strong>
@@ -861,7 +779,7 @@ function kort(b, erErhverv, fuld){
     <div class="card-body">
       <div class="card-top">
         <h3>${erErhverv ? `${KAT_LABEL[b.kategori]} · ${b.m2} m²` : `${b.vaerelser} vær. · ${b.m2} m² · ${b.by}`}</h3>
-        <span class="card-addr">${b.adresse}${erErhverv ? ", "+b.by : ""}</span>
+        ${b.adresse ? `<span class="card-addr">${b.adresse}, ${b.by}</span>` : (erErhverv ? `<span class="card-addr">${b.by}</span>` : `<span class="card-addr">Adresse oplyses ved fremvisning</span>`)}
       </div>
       <p class="small">${b.beskrivelse}</p>
       <div class="card-specs">${b.features.slice(0,4).map(f=>`<span class="spec">${FEATURE_LABEL[f]||f}</span>`).join("")}</div>
@@ -995,7 +913,7 @@ function viewTak(){
 }
 
 const initialer = n => n.split(" ").map(x=>x[0]).join("").slice(0,2).toUpperCase();
-const formatTlf = t => t.replace(/(\d{2})(?=\d)/g,"$1 ").trim();
+const formatTlf = t => t.length === 8 ? t.slice(0,4) + " " + t.slice(4) : t;
 
 /* ---------- interaktion ---------- */
 function bind(){
