@@ -1,0 +1,1143 @@
+<title>Boligmatch</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+
+<style>
+/* ============================================================
+   BOLIGMATCH — OT Bolig- & Erhvervsudlejning
+   Selvstændig widget. Ingen afhængigheder ud over Google Fonts.
+   Skift brandfarver i :root nedenfor.
+   ============================================================ */
+:root{
+  --ground:#F1F4F2;
+  --surface:#FFFFFF;
+  --surface-2:#F7F9F7;
+  --ink:#16221F;
+  --muted:#5D6D67;
+  --faint:#87948F;
+  --line:#DCE4E0;
+  --line-strong:#C3CFCA;
+  --primary:#0F3B33;
+  --primary-hover:#155048;
+  --primary-soft:#E2EDE8;
+  --on-primary:#FFFFFF;
+  --brick:#9C4A2F;
+  --brick-soft:#F6E7E1;
+  --focus:#2E8B78;
+  --shadow:0 1px 2px rgba(22,34,31,.06), 0 8px 24px -12px rgba(22,34,31,.18);
+  --shadow-lift:0 2px 4px rgba(22,34,31,.07), 0 18px 40px -18px rgba(22,34,31,.28);
+  --r-sm:8px; --r-md:12px; --r-lg:18px;
+  --sans:"Libre Franklin",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1412; --surface:#171F1C; --surface-2:#1D2724;
+    --ink:#E7EDEA; --muted:#A3B1AC; --faint:#7C8A85;
+    --line:#2A3531; --line-strong:#3A4843;
+    --primary:#63C3AC; --primary-hover:#7ED2BD; --primary-soft:#1B2E2A;
+    --on-primary:#0C1715;
+    --brick:#DE9277; --brick-soft:#2E211C;
+    --focus:#63C3AC;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    --shadow-lift:0 2px 4px rgba(0,0,0,.45), 0 18px 40px -18px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1412; --surface:#171F1C; --surface-2:#1D2724;
+  --ink:#E7EDEA; --muted:#A3B1AC; --faint:#7C8A85;
+  --line:#2A3531; --line-strong:#3A4843;
+  --primary:#63C3AC; --primary-hover:#7ED2BD; --primary-soft:#1B2E2A;
+  --on-primary:#0C1715;
+  --brick:#DE9277; --brick-soft:#2E211C;
+  --focus:#63C3AC;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  --shadow-lift:0 2px 4px rgba(0,0,0,.45), 0 18px 40px -18px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:720px;
+  margin:0 auto;
+  padding-inline:16px;
+  padding-block:28px 40px;
+}
+.wrap.is-wide{max-width:920px}
+
+/* ---------- typografi ---------- */
+h1,h2,h3{margin:0;font-family:var(--serif);font-weight:500;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(1.65rem,1.2rem + 1.8vw,2.3rem);line-height:1.15}
+h2{font-size:clamp(1.35rem,1.1rem + 1.1vw,1.75rem);line-height:1.2}
+h3{font-size:1.06rem;line-height:1.3}
+p{margin:0}
+.eyebrow{
+  font-family:var(--sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--faint);
+}
+.lede{color:var(--muted);font-size:1.02rem;max-width:56ch}
+.small{font-size:.855rem;color:var(--muted)}
+.tiny{font-size:.78rem;color:var(--faint)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- panel ---------- */
+.panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.panel-body{padding:clamp(20px,4vw,34px)}
+
+/* ---------- progress ---------- */
+.progress{display:flex;align-items:center;gap:14px;padding:14px clamp(20px,4vw,34px);border-bottom:1px solid var(--line);background:var(--surface-2)}
+.progress-track{flex:1;height:4px;border-radius:99px;background:var(--line-strong);overflow:hidden}
+.progress-fill{height:100%;background:var(--primary);border-radius:99px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+.progress-label{font-size:.76rem;font-weight:600;color:var(--muted);letter-spacing:.04em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.btn-back{
+  background:none;border:none;padding:6px;margin:-6px 0 -6px -6px;cursor:pointer;color:var(--muted);
+  border-radius:var(--r-sm);display:inline-flex;align-items:center;gap:5px;font:inherit;font-size:.8rem;font-weight:500;
+}
+.btn-back:hover{color:var(--ink);background:var(--surface)}
+
+/* ---------- intro ---------- */
+.intro-head{display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
+.intro-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.78rem;font-weight:500;color:var(--muted);
+  background:var(--surface-2);border:1px solid var(--line);
+  padding:5px 11px;border-radius:99px;
+}
+.pill svg{flex:none;color:var(--primary)}
+.pill.is-live{background:var(--brick-soft);border-color:transparent;color:var(--brick);font-weight:600}
+.dot-live{width:6px;height:6px;border-radius:99px;background:currentColor;flex:none}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:540px){.split{grid-template-columns:1fr}}
+.track{
+  text-align:left;cursor:pointer;font:inherit;
+  background:var(--surface);border:1.5px solid var(--line-strong);border-radius:var(--r-md);
+  padding:20px;display:flex;flex-direction:column;gap:7px;
+  transition:border-color .16s,box-shadow .16s,transform .16s;
+}
+.track:hover{border-color:var(--primary);box-shadow:var(--shadow-lift);transform:translateY(-2px)}
+.track-icon{color:var(--primary);margin-bottom:3px}
+.track-title{font-family:var(--serif);font-size:1.22rem;font-weight:500}
+.track-sub{font-size:.855rem;color:var(--muted);line-height:1.45}
+.track-cta{font-size:.8rem;font-weight:600;color:var(--primary);margin-top:5px}
+
+/* ---------- spørgsmål ---------- */
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0;display:block}
+.q-head{margin-bottom:6px}
+.q-help{color:var(--muted);font-size:.9rem;margin-bottom:20px;max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{
+  font:inherit;font-size:.92rem;font-weight:500;cursor:pointer;
+  background:var(--surface);color:var(--ink);
+  border:1.5px solid var(--line-strong);border-radius:99px;
+  padding:9px 17px;transition:all .14s;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.chip:hover{border-color:var(--primary);color:var(--primary)}
+.chip[aria-pressed="true"],.chip.is-on{
+  background:var(--primary);border-color:var(--primary);color:var(--on-primary);
+}
+.chip[aria-pressed="true"] .chip-check{opacity:1;width:14px}
+.chip-check{opacity:0;width:0;overflow:hidden;transition:.14s;flex:none}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+.chip.is-wide{border-radius:var(--r-md);padding:13px 17px;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;flex:1 1 150px}
+.chip.is-wide .chip-note{font-size:.78rem;font-weight:400;color:var(--muted)}
+.chip.is-wide[aria-pressed="true"] .chip-note{color:var(--on-primary);opacity:.8}
+
+.subq{margin-bottom:22px}
+.subq:last-of-type{margin-bottom:0}
+.subq-label{font-size:.9rem;font-weight:600;margin-bottom:9px;display:block}
+
+/* ---------- budget ---------- */
+.budget-readout{
+  display:flex;align-items:baseline;gap:9px;margin-bottom:4px;flex-wrap:wrap;
+}
+.budget-value{font-family:var(--serif);font-size:2.4rem;font-weight:500;font-variant-numeric:tabular-nums;line-height:1}
+.budget-unit{color:var(--muted);font-size:.95rem}
+input[type="range"]{
+  -webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin:14px 0 6px;
+}
+input[type="range"]::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:var(--line-strong)}
+input[type="range"]::-moz-range-track{height:6px;border-radius:99px;background:var(--line-strong)}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:26px;height:26px;border-radius:99px;background:var(--primary);
+  border:4px solid var(--surface);box-shadow:var(--shadow);margin-top:-10px;
+}
+input[type="range"]::-moz-range-thumb{
+  width:26px;height:26px;border-radius:99px;background:var(--primary);
+  border:4px solid var(--surface);box-shadow:var(--shadow);
+}
+.range-ends{display:flex;justify-content:space-between;font-size:.78rem;color:var(--faint);font-variant-numeric:tabular-nums}
+
+/* ---------- felter ---------- */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.875rem;font-weight:600;margin-bottom:6px}
+.field input,.field textarea{
+  width:100%;font:inherit;font-size:1rem;color:var(--ink);
+  background:var(--surface-2);border:1.5px solid var(--line-strong);border-radius:var(--r-sm);
+  padding:11px 13px;transition:border-color .14s,background .14s;
+}
+.field input:focus,.field textarea:focus{background:var(--surface);border-color:var(--primary);outline:none}
+.field textarea{resize:vertical;min-height:84px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:540px){.field-row{grid-template-columns:1fr}}
+.field-err{color:var(--brick);font-size:.8rem;font-weight:500;margin-top:5px}
+
+/* ---------- knapper ---------- */
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;align-items:center}
+.btn{
+  font:inherit;font-size:.95rem;font-weight:600;cursor:pointer;
+  border-radius:var(--r-sm);padding:13px 24px;border:1.5px solid transparent;
+  transition:all .15s;display:inline-flex;align-items:center;gap:8px;justify-content:center;
+}
+.btn-primary{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.btn-primary:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+.btn-primary:disabled{opacity:.42;cursor:not-allowed;background:var(--primary)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+.btn-text{background:none;border:none;color:var(--primary);font-weight:600;cursor:pointer;font:inherit;font-size:.9rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:6px}
+.btn-block{width:100%}
+
+:where(button,input,a,[tabindex]):focus-visible{outline:2.5px solid var(--focus);outline-offset:2px;border-radius:var(--r-sm)}
+
+/* ---------- resultat ---------- */
+.verdict{
+  border-radius:var(--r-md);padding:20px;margin-bottom:22px;
+  border:1px solid var(--line);background:var(--surface-2);
+}
+.verdict.is-hit{background:var(--primary-soft);border-color:transparent}
+.verdict h2{margin-bottom:7px}
+.verdict p{color:var(--muted);font-size:.94rem;max-width:56ch}
+.verdict.is-hit p{color:var(--ink);opacity:.82}
+
+.queue{
+  display:flex;align-items:center;gap:14px;margin-top:16px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 16px;
+}
+.queue-no{
+  font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1;color:var(--primary);
+  font-variant-numeric:tabular-nums;flex:none;
+}
+.queue-txt{font-size:.85rem;line-height:1.4}
+.queue-txt strong{font-weight:600}
+
+.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+  overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .18s,transform .18s;
+}
+.card:hover{box-shadow:var(--shadow-lift);transform:translateY(-2px)}
+.card-media{position:relative;aspect-ratio:16/10;max-width:100%;background:var(--surface-2);overflow:hidden}
+.card-media img{width:100%;height:100%;object-fit:cover;display:block}
+.card-media svg{width:100%;height:100%;display:block}
+.badge{
+  position:absolute;top:11px;left:11px;z-index:2;
+  font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  background:var(--brick);color:#fff;padding:5px 10px;border-radius:99px;
+}
+.badge.is-soon{background:var(--primary);color:var(--on-primary)}
+.card-body{padding:16px;display:flex;flex-direction:column;gap:11px;flex:1}
+.card-top{display:flex;flex-direction:column;gap:3px}
+.card-addr{font-size:.78rem;color:var(--faint)}
+.card-specs{display:flex;flex-wrap:wrap;gap:6px}
+.spec{font-size:.75rem;font-weight:500;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);padding:3px 9px;border-radius:99px}
+
+/* økonomiboks */
+.econ{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;font-variant-numeric:tabular-nums}
+.econ-sec{padding:11px 13px}
+.econ-sec + .econ-sec{border-top:1px solid var(--line);background:var(--surface-2)}
+.econ-row{display:flex;justify-content:space-between;gap:12px;font-size:.83rem;color:var(--muted);padding:2px 0}
+.econ-row.is-total{font-size:.95rem;font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:7px;padding-top:8px}
+.econ-cap{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+
+.alt-head{margin:30px 0 14px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.alt-head h3{font-family:var(--sans);font-size:.95rem;font-weight:700}
+
+/* ---------- tillid ---------- */
+.trust{
+  margin-top:18px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:20px clamp(18px,3.5vw,26px);
+}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px 22px;margin-top:14px}
+.trust-item{display:flex;gap:11px;align-items:flex-start}
+.trust-item svg{flex:none;color:var(--primary);margin-top:2px}
+.trust-item strong{display:block;font-size:.875rem;font-weight:600;margin-bottom:2px}
+.trust-item span{font-size:.815rem;color:var(--muted);line-height:1.45}
+
+.safety{
+  border:1.5px solid var(--primary);background:var(--primary-soft);
+  border-radius:var(--r-md);padding:16px 18px;margin:22px 0;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.safety svg{flex:none;color:var(--primary);margin-top:1px}
+.safety strong{display:block;font-size:.88rem;font-weight:700;margin-bottom:4px}
+.safety p{font-size:.835rem;line-height:1.5;color:var(--ink);opacity:.85}
+
+/* ---------- personer ---------- */
+.people{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.person{
+  display:flex;align-items:center;gap:12px;flex:1 1 235px;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;
+}
+.avatar{
+  width:46px;height:46px;border-radius:99px;flex:none;overflow:hidden;
+  background:var(--primary);color:var(--on-primary);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.02em;
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.person-name,.person-role{display:block}
+.person > span:last-child{display:flex;flex-direction:column;min-width:0}
+.person-name{font-size:.88rem;font-weight:600;line-height:1.25}
+.person-role{font-size:.775rem;color:var(--muted);margin-bottom:2px}
+.person a{font-size:.82rem;color:var(--primary);font-weight:600;text-decoration:none;margin-top:2px}
+.person a:hover{text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- næste skridt ---------- */
+.steps3{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:16px;counter-reset:s}
+.step3{display:flex;gap:11px;align-items:flex-start;counter-increment:s}
+.step3::before{
+  content:counter(s);flex:none;width:25px;height:25px;border-radius:99px;
+  background:var(--primary);color:var(--on-primary);
+  font-size:.76rem;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.step3 strong{display:block;font-size:.865rem;font-weight:600}
+.step3 span{font-size:.8rem;color:var(--muted);line-height:1.42}
+
+/* ---------- kvittering ---------- */
+.done{text-align:center;padding:14px 0 6px}
+.done-mark{
+  width:62px;height:62px;border-radius:99px;background:var(--primary-soft);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+}
+.summary{
+  text-align:left;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:16px 18px;margin:22px 0;
+}
+.summary dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 16px;font-size:.85rem}
+.summary dt{color:var(--muted)}
+.summary dd{margin:0;font-weight:500;text-align:right}
+
+/* ---------- diverse ---------- */
+.demo-note{
+  background:var(--brick-soft);color:var(--brick);border-radius:var(--r-sm);
+  padding:9px 13px;font-size:.78rem;font-weight:600;margin-bottom:14px;
+  display:flex;gap:8px;align-items:center;line-height:1.4;
+}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:4px;font-size:.8rem;color:var(--muted);line-height:1.45}
+.consent input{margin-top:3px;width:17px;height:17px;flex:none;accent-color:var(--primary)}
+.foot{margin-top:16px;text-align:center}
+hr.sep{border:0;border-top:1px solid var(--line);margin:26px 0}
+
+.fade{animation:fade .3s cubic-bezier(.2,0,.2,1) both}
+@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .card:hover,.track:hover{transform:none}
+}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+</style>
+
+<!-- ============================================================
+     KONFIGURATION
+     Alt, OT Bolig skal vedligeholde, ligger i dette script-tag.
+     Intet andet i filen behøver at blive rørt.
+     ============================================================ -->
+<script>
+const CONFIG = {
+  /* Vis den orange "demodata"-bjælke. Sæt til false, når rigtige
+     boliger og ventelistetal er lagt ind. */
+  demo: true,
+
+  /* Samlet antal lejemål — bruges til den ærlige statuslinje
+     "X ledige ud af Y lige nu". */
+  totalLejemaal: 200,
+
+  /* Hvor henvendelser sendes hen. Sæt til en URL, der tager imod
+     POST med JSON (fx Formspree, Make/Zapier-webhook eller jeres
+     eget endpoint). Er den tom, vises kvitteringen uden at sende —
+     brug kun tom til test. */
+  endpoint: "",
+
+  /* Fallback: åbner brugerens mailprogram, hvis endpoint fejler. */
+  mailTil: "ole@otbolig.dk",
+
+  /* Lovet svartid — skal kunne holdes. */
+  svartid: "1 arbejdsdag",
+
+  kontakt: {
+    ole:    { navn:"Ole Terkelsen",  rolle:"Ejer, OT Bolig siden 2003", tlf:"20853395", foto:"" },
+    rickie: { navn:"Rickie Wilken",  rolle:"Ejendomsadministrator",     tlf:"40187930", foto:"" }
+  },
+
+  /* Reelle ventelistetal pr. "By|antal værelser".
+     Lad et felt være tomt, hvis tallet ikke kendes — så vises der
+     INTET tal. Vi opfinder aldrig en køplads. */
+  venteliste: {
+    "Kolding|3": 4,
+    "Kolding|2": 9,
+    "Vejle|3":   2,
+    "Grindsted|2": 1
+  },
+
+  /* Hvor mange lejemål bliver typisk ledige om året pr. by.
+     Bruges til ærlig forventningsstyring. Tom = vises ikke. */
+  omsaetning: { "Kolding":14, "Vejle":6, "Grindsted":5, "Billund":3, "Christiansfeld":2 }
+};
+
+/* ---------- LEDIGE BOLIGER ----------
+   Tilføj "billede" med en URL til et rigtigt foto — ellers tegnes
+   en neutral facade-illustration automatisk.
+   depositumMdr / forudbetaltMdr styrer indflytningsregnestykket. */
+const BOLIGER = [
+  { id:"kol-99", by:"Kolding", adresse:"Sct. Jørgens Gade 14, 2. th.",
+    vaerelser:4, m2:99, husleje:8950, aconto:1150, depositumMdr:3, forudbetaltMdr:1,
+    ledig:"1. november", features:["altan","elevator","p-plads","nyrenoveret"],
+    beskrivelse:"Gennemrenoveret lejlighed tæt på gågaden. Egen altan mod gården.", billede:"" },
+
+  { id:"kol-52", by:"Kolding", adresse:"Låsbygade 41, 1. tv.",
+    vaerelser:2, m2:52, husleje:5650, aconto:780, depositumMdr:3, forudbetaltMdr:1,
+    ledig:"Straks", features:["vaskemaskine","tæt på station"],
+    beskrivelse:"Lys 2-værelses med plads til egen vaskemaskine. 6 min. til stationen.", billede:"" },
+
+  { id:"kol-49", by:"Kolding", adresse:"Haderslevvej 88, st.",
+    vaerelser:2, m2:49, husleje:5200, aconto:720, depositumMdr:3, forudbetaltMdr:1,
+    ledig:"15. oktober", features:["have","husdyr","p-plads"],
+    beskrivelse:"Stuelejlighed med egen terrasse og lille have. Husdyr tilladt.", billede:"" },
+
+  { id:"vej-76", by:"Vejle", adresse:"Dæmningen 22, 3. th.",
+    vaerelser:3, m2:76, husleje:7400, aconto:940, depositumMdr:3, forudbetaltMdr:1,
+    ledig:"1. december", features:["altan","elevator","tæt på station"],
+    beskrivelse:"3-værelses med altan og udsigt over fjorden. Elevator i opgangen.", billede:"" },
+
+  { id:"gri-64", by:"Grindsted", adresse:"Borgergade 9, 1. tv.",
+    vaerelser:3, m2:64, husleje:5300, aconto:810, depositumMdr:3, forudbetaltMdr:1,
+    ledig:"Straks", features:["p-plads","lav varmeudgift","nyrenoveret"],
+    beskrivelse:"Nyistandsat lejlighed midt i Grindsted. Nye vinduer og lave varmeudgifter.", billede:"" },
+
+  { id:"bil-58", by:"Billund", adresse:"Hans Jensensvej 4, st. th.",
+    vaerelser:2, m2:58, husleje:5900, aconto:800, depositumMdr:3, forudbetaltMdr:1,
+    ledig:"1. november", features:["p-plads","have","vaskemaskine"],
+    beskrivelse:"Rolig stuelejlighed med have. Kort afstand til Legoland og lufthavnen.", billede:"" },
+
+  { id:"chr-71", by:"Christiansfeld", adresse:"Lindegade 31, 1. sal",
+    vaerelser:3, m2:71, husleje:5750, aconto:870, depositumMdr:3, forudbetaltMdr:1,
+    ledig:"1. januar", features:["husdyr","p-plads","lav varmeudgift"],
+    beskrivelse:"Charmerende lejlighed i den historiske bykerne. Husdyr efter aftale.", billede:"" }
+];
+
+/* ---------- LEDIGE ERHVERVSLEJEMÅL ---------- */
+const ERHVERV = [
+  { id:"e-kol-kontor", by:"Kolding", adresse:"Jernbanegade 27", kategori:"kontor",
+    m2:120, maanedligLeje:11500, drift:1800, ledig:"Straks",
+    features:["parkering","kundeadgang","kontorpladser"],
+    beskrivelse:"Lyse kontorlokaler i House of Innovation. 8-10 arbejdspladser, fælles mødefaciliteter.", billede:"" },
+
+  { id:"e-kol-butik", by:"Kolding", adresse:"Søndergade 12", kategori:"butik",
+    m2:85, maanedligLeje:9800, drift:1400, ledig:"1. december",
+    features:["facade","kundeadgang","parkering"],
+    beskrivelse:"Butikslokale med stor facade mod gågaden. Eget lager bagved.", billede:"" },
+
+  { id:"e-gri-lager", by:"Grindsted", adresse:"Industrivej 7", kategori:"lager",
+    m2:420, maanedligLeje:14200, drift:2100, ledig:"Straks",
+    features:["port","højloft","parkering","3-faset"],
+    beskrivelse:"Lagerhal med port i terrænniveau og 5,5 m til loft. God tilkørsel.", billede:"" },
+
+  { id:"e-vej-vaerksted", by:"Vejle", adresse:"Havnegade 40", kategori:"vaerksted",
+    m2:180, maanedligLeje:8900, drift:1600, ledig:"1. november",
+    features:["port","3-faset","parkering"],
+    beskrivelse:"Værkstedslokale med port, 3-faset strøm og plads til to lifte.", billede:"" }
+];
+</script>
+
+
+<div class="wrap" id="wrap">
+  <div id="app" aria-live="polite"></div>
+
+  <!-- Tillidsbjælken er ALTID synlig, uanset hvor man er i flowet -->
+  <section class="trust" aria-labelledby="trust-h">
+    <p class="eyebrow" id="trust-h">Derfor kan du regne med os</p>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
+        <div><strong>Vi ejer selv boligerne</strong><span>Vi er udlejer — ikke en portal. Du taler med ejeren, ikke et mellemled.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div><strong>Gratis at stå på listen</strong><span>Du betaler aldrig for at blive skrevet op eller for at se en bolig.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><strong>Samme ejer siden 2003</strong><span>30 ejendomme og 200 lejemål i Trekantområdet. CVR 27282792.</span></div>
+      </div>
+      <div class="trust-item">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a5 5 0 0 0-7 7l-5 5a2 2 0 1 0 3 3l5-5a5 5 0 0 0 7-7l-3 3-3-3 3-3z"/></svg>
+        <div><strong>Egen vicevært og administration</strong><span>Går varmen, ringer du til et menneske i Trekantområdet — ikke et callcenter.</span></div>
+      </div>
+    </div>
+
+    <div class="people" id="people"></div>
+
+    <hr class="sep">
+    <p class="eyebrow">Sådan foregår det</p>
+    <div class="steps3">
+      <div class="step3"><div><strong>Du får svar</strong><span>Vi vender tilbage inden for <span id="svartid-1"></span> — også hvis vi ikke har noget.</span></div></div>
+      <div class="step3"><div><strong>Fremvisning</strong><span>Vi går turen sammen, og du får alle tallene på skrift.</span></div></div>
+      <div class="step3"><div><strong>Kontrakt</strong><span>Først når du har sagt ja, betales depositum. Aldrig før.</span></div></div>
+    </div>
+    <p class="tiny" style="margin-top:16px">Vi bruger kun dine oplysninger til at finde dig et lejemål. Vi videresælger ingenting, og du kan altid få dig slettet ved at skrive til os.</p>
+  </section>
+</div>
+
+
+<script>
+/* ============================================================
+   APP
+   ============================================================ */
+const app  = document.getElementById("app");
+const wrap = document.getElementById("wrap");
+
+const BYER = ["Kolding","Vejle","Grindsted","Billund","Christiansfeld","Lunderskov","Vamdrup","Sdr. Omme","Haderslev","Gesten"];
+
+const FEATURE_LABEL = {
+  "altan":"Altan eller terrasse", "have":"Have", "husdyr":"Husdyr tilladt",
+  "elevator":"Elevator", "p-plads":"Parkering", "vaskemaskine":"Plads til vaskemaskine",
+  "nyrenoveret":"Nyrenoveret", "tæt på station":"Tæt på station eller skole",
+  "lav varmeudgift":"Lav varmeudgift",
+  "facade":"Facade mod vej", "kundeadgang":"Kundeadgang", "port":"Port eller rampe",
+  "højloft":"Højt til loftet", "3-faset":"3-faset strøm", "parkering":"Parkering",
+  "kontorpladser":"Klar til kontorpladser"
+};
+const KAT_LABEL = { kontor:"Kontor", butik:"Butik", lager:"Lager", vaerksted:"Værksted", klinik:"Klinik", showroom:"Showroom" };
+
+const kr = n => new Intl.NumberFormat("da-DK").format(Math.round(n)) + " kr.";
+const vaerelsesTekst = v => ({1:"1–2",2:"2–3",3:"3–4",4:"4+"})[v] || "";
+
+/* ---------- trin ---------- */
+const TRIN_PRIVAT = [
+  { id:"by", type:"multi", sp:"Hvor vil du bo?", hjaelp:"Vælg gerne flere byer — så er der større chance for, at vi kan hjælpe dig.",
+    valg:BYER.map(b=>({v:b,t:b})), alle:{v:"*",t:"Jeg er fleksibel"} },
+
+  { id:"vaerelser", type:"single", sp:"Hvor stor skal boligen være?", hjaelp:"Du kan altid justere det senere sammen med os.",
+    valg:[{v:1,t:"1–2 værelser"},{v:2,t:"2–3 værelser"},{v:3,t:"3–4 værelser"},{v:4,t:"4+ værelser"}] },
+
+  { id:"budget", type:"budget", sp:"Hvad må huslejen højst være?", hjaelp:"Vi viser dig altid det fulde månedlige beløb inklusive forbrug — ingen overraskelser bagefter.",
+    min:3500, max:14000, step:250, start:7500 },
+
+  { id:"tid", type:"single", sp:"Hvornår skal du flytte?", hjaelp:"Det er helt i orden bare at orientere sig.",
+    valg:[{v:"straks",t:"Hurtigst muligt"},{v:"3mdr",t:"Inden for 3 måneder"},{v:"6mdr",t:"Om 3–6 måneder"},{v:"kigger",t:"Jeg orienterer mig"}] },
+
+  { id:"vigtigt", type:"multi", max:3, sp:"Hvad betyder mest for dig?", hjaelp:"Vælg op til tre. Vi bruger det til at finde det rigtige — ikke til at sortere dig fra.",
+    valg:["altan","have","husdyr","elevator","p-plads","vaskemaskine","nyrenoveret","tæt på station","lav varmeudgift"].map(f=>({v:f,t:FEATURE_LABEL[f]})) },
+
+  { id:"omdig", type:"gruppe", sp:"Og lidt om dig", hjaelp:"Fire hurtige spørgsmål, så vi kan finde noget, der reelt passer.",
+    underspoergsmaal:[
+      { id:"husstand", label:"Hvem skal bo der?", valg:[{v:"alene",t:"Mig alene"},{v:"par",t:"Os to"},{v:"familie",t:"Familie med børn"},{v:"studerende",t:"Studerende"},{v:"senior",t:"Senior"}] },
+      { id:"indkomst", label:"Har du fast indkomst, SU eller pension?", valg:[{v:"ja",t:"Ja"},{v:"nej",t:"Ikke lige nu"}] },
+      { id:"husdyr", label:"Har du husdyr?", valg:[{v:"nej",t:"Nej"},{v:"ja",t:"Ja"}] },
+      { id:"ryger", label:"Ryges der indendørs?", valg:[{v:"nej",t:"Nej"},{v:"ja",t:"Ja"}] }
+    ] }
+];
+
+const TRIN_ERHVERV = [
+  { id:"kategori", type:"single", sp:"Hvad skal I bruge?", hjaelp:"Har I brug for en kombination, så vælg det vigtigste — vi taler om resten.",
+    valg:Object.keys(KAT_LABEL).map(k=>({v:k,t:KAT_LABEL[k]})) },
+
+  { id:"m2", type:"single", sp:"Hvor mange kvadratmeter?", hjaelp:"Et cirka-tal er fint. Vi har ofte noget, der ligger tæt på.",
+    valg:[{v:"0-50",t:"Op til 50 m²"},{v:"50-150",t:"50–150 m²"},{v:"150-500",t:"150–500 m²"},{v:"500+",t:"Over 500 m²"}] },
+
+  { id:"by", type:"multi", sp:"Hvor skal lokalerne ligge?", hjaelp:"Vælg gerne flere byer.",
+    valg:BYER.map(b=>({v:b,t:b})), alle:{v:"*",t:"Hele Trekantområdet"} },
+
+  { id:"tid", type:"single", sp:"Hvornår skal I bruge det?",
+    valg:[{v:"straks",t:"Hurtigst muligt"},{v:"3mdr",t:"Inden for 3 måneder"},{v:"6mdr",t:"Om 3–6 måneder"},{v:"kigger",t:"Vi undersøger markedet"}] },
+
+  { id:"krav", type:"multi", max:4, sp:"Hvad skal lokalet kunne?", hjaelp:"Vælg op til fire.",
+    valg:["facade","kundeadgang","port","højloft","parkering","3-faset","kontorpladser"].map(f=>({v:f,t:FEATURE_LABEL[f]})) }
+];
+
+/* ---------- tilstand ---------- */
+let S = { spor:null, trin:0, svar:{}, resultat:null, valgtId:null, sendt:false };
+
+/* ---------- matchlogik ---------- */
+function vaerelsesInterval(v){ return {1:[1,2],2:[2,3],3:[3,4],4:[4,9]}[v] || [1,9]; }
+function m2Interval(v){ return {"0-50":[0,50],"50-150":[50,150],"150-500":[150,500],"500+":[500,99999]}[v] || [0,99999]; }
+
+function matchBoliger(s){
+  const byer = (s.by||[]).includes("*") || !(s.by||[]).length ? BYER : s.by;
+  const [vMin,vMax] = vaerelsesInterval(s.vaerelser);
+  const budget = s.budget;
+  const oensker = s.vigtigt || [];
+
+  return BOLIGER.map(b=>{
+    const byOk = byer.includes(b.by);
+    const vOk  = b.vaerelser >= vMin && b.vaerelser <= vMax;
+    const pOk  = b.husleje <= budget;
+    const hits = oensker.filter(f=>b.features.includes(f)).length;
+    const kerne = (byOk?1:0)+(vOk?1:0)+(pOk?1:0);
+    return { b, byOk, vOk, pOk, hits, kerne, score: kerne*10 + hits*2 - Math.abs(b.husleje-budget)/5000 };
+  }).sort((a,b)=>b.score-a.score);
+}
+
+function matchErhverv(s){
+  const byer = (s.by||[]).includes("*") || !(s.by||[]).length ? BYER : s.by;
+  const [mMin,mMax] = m2Interval(s.m2);
+  const krav = s.krav || [];
+  return ERHVERV.map(e=>{
+    const byOk = byer.includes(e.by);
+    const kOk  = e.kategori === s.kategori;
+    const mOk  = e.m2 >= mMin && e.m2 <= mMax;
+    const hits = krav.filter(f=>e.features.includes(f)).length;
+    const kerne = (byOk?1:0)+(kOk?1:0)+(mOk?1:0);
+    return { b:e, byOk, kOk, mOk, hits, kerne, score: kerne*10 + hits*2 };
+  }).sort((a,b)=>b.score-a.score);
+}
+
+/* Køplads vises KUN, hvis vi har et reelt tal. Aldrig et opdigtet. */
+function koePlads(by, vaerelser){
+  const rum = {1:2,2:2,3:3,4:4}[vaerelser] || vaerelser;
+  const n = CONFIG.venteliste[by+"|"+rum];
+  return (typeof n === "number" && n >= 0) ? n+1 : null;
+}
+function aarligOmsaetning(by){
+  const n = CONFIG.omsaetning[by];
+  return (typeof n === "number" && n > 0) ? n : null;
+}
+
+/* ---------- ikoner ---------- */
+const ICON = {
+  tilbage:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>',
+  check:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 6"/></svg>',
+  hjem:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>',
+  erhverv:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V4h9v17M14 21V9h5v12"/><path d="M8 8h3M8 12h3M8 16h3"/></svg>',
+  skjold:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
+  ok:'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"/></svg>',
+  info:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg>'
+};
+
+/* Facade-illustration, når der ikke er et rigtigt foto */
+function facade(seed){
+  const h = [...String(seed)].reduce((a,c)=>a+c.charCodeAt(0),0);
+  const raekker = 3 + (h % 2), kolonner = 4 + (h % 3);
+  let vinduer = "";
+  for(let r=0;r<raekker;r++) for(let c=0;c<kolonner;c++){
+    const lys = ((r*7+c*13+h) % 5) === 0;
+    vinduer += `<rect x="${26+c*(148/kolonner)}" y="${34+r*(112/raekker)}" width="${148/kolonner-16}" height="${112/raekker-16}" rx="2" fill="${lys?'var(--primary)':'var(--line-strong)'}" opacity="${lys?'.55':'.75'}"/>`;
+  }
+  return `<svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration af ejendommen">
+    <rect width="200" height="125" fill="var(--surface-2)"/>
+    <rect x="14" y="20" width="172" height="105" rx="3" fill="var(--line)" opacity=".55"/>
+    <path d="M14 20 L100 0 L186 20 Z" fill="var(--line-strong)" opacity=".8"/>
+    ${vinduer}
+    <rect x="88" y="100" width="24" height="25" rx="2" fill="var(--primary)" opacity=".45"/>
+  </svg>`;
+}
+
+/* ---------- render ---------- */
+function render(){
+  if(S.spor === null)        app.innerHTML = viewIntro();
+  else if(S.trin === "res")  app.innerHTML = viewResultat();
+  else if(S.trin === "kontakt") app.innerHTML = viewKontakt();
+  else if(S.trin === "tak")  app.innerHTML = viewTak();
+  else                       app.innerHTML = viewTrin();
+
+  wrap.classList.toggle("is-wide", S.trin === "res");
+  bind();
+  const h = app.querySelector("[data-focus]");
+  if(h && S.spor !== null){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); }
+  meldHoejde();
+}
+
+function demoBjaelke(){
+  return CONFIG.demo
+    ? `<div class="demo-note">${ICON.info}<span>Demodata: boliger, ventelistetal og priser er eksempler. Udskiftes med OT Boligs egne tal før lancering.</span></div>`
+    : "";
+}
+
+function viewIntro(){
+  const ledige = BOLIGER.length + ERHVERV.length;
+  return `
+  ${demoBjaelke()}
+  <div class="panel fade"><div class="panel-body">
+    <div class="intro-head">
+      <p class="eyebrow">Boligmatch</p>
+      <h1 data-focus>Find din næste bolig i Trekantområdet</h1>
+      <p class="lede">Seks trin, cirka et minut — så ved du præcis, hvor du står hos os. Også hvis svaret er, at vi ikke har noget til dig lige nu.</p>
+      <div class="intro-meta">
+        <span class="pill is-live"><span class="dot-live"></span>${ledige} ledige ud af ${CONFIG.totalLejemaal} lejemål lige nu</span>
+        <span class="pill">${ICON.skjold} Gratis · ingen oprettelse</span>
+      </div>
+    </div>
+    <div class="split">
+      <button class="track" data-spor="privat">
+        <span class="track-icon">${ICON.hjem}</span>
+        <span class="track-title">Jeg søger en bolig</span>
+        <span class="track-sub">Lejlighed fra 1 til 5 værelser i Kolding, Vejle, Grindsted, Billund og resten af Trekantområdet.</span>
+        <span class="track-cta">Start her →</span>
+      </button>
+      <button class="track" data-spor="erhverv">
+        <span class="track-icon">${ICON.erhverv}</span>
+        <span class="track-title">Vi søger erhvervslokaler</span>
+        <span class="track-sub">Kontor, butik, lager eller værksted. Ole kender markedet og har ofte noget, der aldrig bliver annonceret.</span>
+        <span class="track-cta">Start her →</span>
+      </button>
+    </div>
+  </div></div>`;
+}
+
+function trinListe(){ return S.spor === "privat" ? TRIN_PRIVAT : TRIN_ERHVERV; }
+
+function viewTrin(){
+  const liste = trinListe();
+  const t = liste[S.trin];
+  const pct = Math.round((S.trin / (liste.length + 1)) * 100);
+  return `
+  ${demoBjaelke()}
+  <div class="panel fade">
+    <div class="progress">
+      <button class="btn-back" data-nav="tilbage">${ICON.tilbage} Tilbage</button>
+      <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <span class="progress-label">Trin ${S.trin+1} af ${liste.length}</span>
+    </div>
+    <div class="panel-body">
+      <fieldset>
+        <legend class="q-head"><h2 data-focus>${t.sp}</h2></legend>
+        ${t.hjaelp ? `<p class="q-help">${t.hjaelp}</p>` : ""}
+        ${feltFor(t)}
+      </fieldset>
+      ${t.type === "single" ? "" : `
+      <div class="actions">
+        <button class="btn btn-primary" data-nav="frem" ${kanFortsaette(t)?"":"disabled"}>Videre</button>
+        ${t.type==="multi" && !t.max ? `<span class="small">${(S.svar[t.id]||[]).length ? (S.svar[t.id]||[]).length+" valgt" : "Vælg mindst én"}</span>` : ""}
+      </div>`}
+    </div>
+  </div>`;
+}
+
+function feltFor(t){
+  const v = S.svar[t.id];
+  if(t.type === "budget"){
+    const val = v ?? t.start;
+    return `
+      <div class="budget-readout">
+        <span class="budget-value num" id="budget-vis">${new Intl.NumberFormat("da-DK").format(val)}</span>
+        <span class="budget-unit">kr. om måneden${val >= t.max ? " eller mere" : ""}</span>
+      </div>
+      <input type="range" id="budget-slider" min="${t.min}" max="${t.max}" step="${t.step}" value="${val}"
+             aria-label="Maksimal husleje om måneden">
+      <div class="range-ends"><span>${new Intl.NumberFormat("da-DK").format(t.min)} kr.</span><span>${new Intl.NumberFormat("da-DK").format(t.max)}+ kr.</span></div>`;
+  }
+  if(t.type === "gruppe"){
+    return t.underspoergsmaal.map(u=>`
+      <div class="subq">
+        <span class="subq-label">${u.label}</span>
+        <div class="chips">${u.valg.map(o=>`
+          <button class="chip" type="button" data-sub="${u.id}" data-val="${o.v}" aria-pressed="${S.svar[u.id]===o.v}">
+            <span class="chip-check">${ICON.check}</span>${o.t}
+          </button>`).join("")}</div>
+      </div>`).join("");
+  }
+  const valgt = t.type === "multi" ? (v || []) : v;
+  const fuld  = t.max && (v||[]).length >= t.max;
+  const alle  = t.alle ? `<button class="chip" type="button" data-val="${t.alle.v}" aria-pressed="${(v||[]).includes(t.alle.v)}"><span class="chip-check">${ICON.check}</span>${t.alle.t}</button>` : "";
+  return `<div class="chips">
+    ${t.valg.map(o=>{
+      const on = t.type === "multi" ? (v||[]).includes(String(o.v)) || (v||[]).includes(o.v) : valgt === o.v;
+      const laast = t.type === "multi" && fuld && !on;
+      return `<button class="chip" type="button" data-val="${o.v}" aria-pressed="${on}" ${laast?"disabled":""}>
+        <span class="chip-check">${ICON.check}</span>${o.t}</button>`;
+    }).join("")}
+    ${alle}
+  </div>`;
+}
+
+function kanFortsaette(t){
+  const v = S.svar[t.id];
+  if(t.type === "budget") return true;
+  if(t.type === "multi")  return Array.isArray(v) && v.length > 0;
+  if(t.type === "gruppe") return t.underspoergsmaal.every(u=>S.svar[u.id] !== undefined);
+  return v !== undefined;
+}
+
+/* ---------- resultat ---------- */
+function viewResultat(){
+  const erErhverv = S.spor === "erhverv";
+  const r = erErhverv ? matchErhverv(S.svar) : matchBoliger(S.svar);
+  const fuldeMatch = r.filter(x=>x.kerne === 3);
+  const naesten    = r.filter(x=>x.kerne === 2).slice(0,3);
+  S.resultat = { fuldeMatch, naesten };
+
+  const foersteBy = (S.svar.by||[]).filter(b=>b!=="*")[0] || "Trekantområdet";
+  let dom;
+
+  if(fuldeMatch.length){
+    dom = `<div class="verdict is-hit">
+      <h2 data-focus>${fuldeMatch.length === 1 ? "Vi har én, der passer til dig" : `Vi har ${fuldeMatch.length}, der passer til dig`}</h2>
+      <p>${erErhverv ? "Lokalerne herunder matcher jeres behov på type, størrelse og område." : "Boligerne herunder matcher det, du søger, på by, størrelse og budget. Du ser det fulde beløb — både pr. måned og ved indflytning."}</p>
+    </div>`;
+  } else if(naesten.length){
+    const plads = erErhverv ? null : koePlads(foersteBy, S.svar.vaerelser);
+    const oms   = erErhverv ? null : aarligOmsaetning(foersteBy);
+    dom = `<div class="verdict">
+      <h2 data-focus>Ikke et præcist match lige nu</h2>
+      <p>Vi har ikke noget ledigt i ${foersteBy}, der rammer alle dine ønsker${erErhverv?"":" inden for budgettet"}. ${oms ? `Til gengæld bliver der typisk omkring ${oms} lejemål ledige i ${foersteBy} om året.` : ""} Herunder er det, der kommer tættest på.</p>
+      ${plads ? `<div class="queue">
+        <span class="queue-no">nr. ${plads}</span>
+        <span class="queue-txt">Skriver du dig op nu, står du <strong>nummer ${plads}</strong> på listen til ${vaerelsesTekst(S.svar.vaerelser)}-værelses i ${foersteBy}.<br>Vi skriver til dig, <strong>før boligen kommer på nettet.</strong></span>
+      </div>` : `<div class="queue">
+        <span class="queue-no">✉</span>
+        <span class="queue-txt">Skriver du dig op nu, kontakter vi dig, <strong>før boligen kommer på nettet.</strong></span>
+      </div>`}
+    </div>`;
+  } else {
+    dom = `<div class="verdict">
+      <h2 data-focus>Vi har ikke noget, der passer</h2>
+      <p>Det er det ærlige svar. Vi har ingen ledige ${erErhverv?"lokaler":"boliger"} i ${foersteBy}, der ligner det, du søger — og vi vil hellere sige det end vise dig noget, der alligevel ikke rammer. Skriv dig op, så kontakter vi dig, når der kommer noget.</p>
+    </div>`;
+  }
+
+  const primaere = fuldeMatch.length ? fuldeMatch : [];
+  const alt = fuldeMatch.length ? r.filter(x=>x.kerne===2).slice(0,2) : naesten;
+
+  return `
+  ${demoBjaelke()}
+  <div class="panel fade">
+    <div class="progress">
+      <button class="btn-back" data-nav="tilbage">${ICON.tilbage} Ret mine svar</button>
+      <div class="progress-track"><div class="progress-fill" style="width:85%"></div></div>
+      <span class="progress-label">Dit resultat</span>
+    </div>
+    <div class="panel-body">
+      ${dom}
+      ${primaere.length ? `<div class="cards">${primaere.map(x=>kort(x.b, erErhverv, true)).join("")}</div>` : ""}
+      ${alt.length ? `
+        <div class="alt-head"><h3>${fuldeMatch.length ? "Måske også noget for dig" : "Det tætteste vi har"}</h3>
+        <span class="tiny">Afviger på ét eller to punkter</span></div>
+        <div class="cards">${alt.map(x=>kort(x.b, erErhverv, false)).join("")}</div>` : ""}
+
+      <div class="safety">${ICON.skjold}<div>
+        <strong>Sådan gør vi aldrig</strong>
+        <p>Vi beder dig aldrig om MitID, kontooplysninger eller betaling for at se en bolig. Det koster ingenting at stå på listen, og depositum betales først, når kontrakten er underskrevet. Er du i tvivl, så ring til Ole på ${formatTlf(CONFIG.kontakt.ole.tlf)}.</p>
+      </div></div>
+
+      <div class="actions">
+        <button class="btn btn-primary" data-nav="kontakt">${fuldeMatch.length ? "Book en fremvisning" : "Skriv mig op til listen"}</button>
+        <button class="btn btn-ghost" data-nav="forfra">Start forfra</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function kort(b, erErhverv, fuld){
+  const leje = erErhverv ? b.maanedligLeje : b.husleje;
+  const drift = erErhverv ? b.drift : b.aconto;
+  const total = leje + drift;
+  const dep = leje * (b.depositumMdr || 3);
+  const forud = leje * (b.forudbetaltMdr || 1);
+  const straks = b.ledig === "Straks";
+
+  return `<article class="card">
+    <div class="card-media">
+      <span class="badge ${straks?"":"is-soon"}">${straks ? "Ledig nu" : "Ledig "+b.ledig}</span>
+      ${b.billede ? `<img src="${b.billede}" alt="${b.adresse}">` : facade(b.id)}
+    </div>
+    <div class="card-body">
+      <div class="card-top">
+        <h3>${erErhverv ? `${KAT_LABEL[b.kategori]} · ${b.m2} m²` : `${b.vaerelser} vær. · ${b.m2} m² · ${b.by}`}</h3>
+        <span class="card-addr">${b.adresse}${erErhverv ? ", "+b.by : ""}</span>
+      </div>
+      <p class="small">${b.beskrivelse}</p>
+      <div class="card-specs">${b.features.slice(0,4).map(f=>`<span class="spec">${FEATURE_LABEL[f]||f}</span>`).join("")}</div>
+
+      <div class="econ">
+        <div class="econ-sec">
+          <p class="econ-cap">Hver måned</p>
+          <div class="econ-row"><span>${erErhverv?"Leje":"Husleje"}</span><span>${kr(leje)}</span></div>
+          <div class="econ-row"><span>${erErhverv?"Drift og forbrug":"Aconto varme og vand"}</span><span>${kr(drift)}</span></div>
+          <div class="econ-row is-total"><span>I alt pr. måned</span><span>${kr(total)}</span></div>
+        </div>
+        <div class="econ-sec">
+          <p class="econ-cap">Ved indflytning</p>
+          <div class="econ-row"><span>Depositum (${b.depositumMdr||3} mdr.)</span><span>${kr(dep)}</span></div>
+          <div class="econ-row"><span>Forudbetalt leje (${b.forudbetaltMdr||1} md.)</span><span>${kr(forud)}</span></div>
+          <div class="econ-row is-total"><span>I alt at betale</span><span>${kr(dep+forud)}</span></div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" style="margin-top:auto" data-nav="kontakt" data-bolig="${b.id}">
+        ${fuld ? "Book fremvisning" : "Jeg vil høre mere"}
+      </button>
+    </div>
+  </article>`;
+}
+
+/* ---------- kontakt ---------- */
+function viewKontakt(){
+  const erErhverv = S.spor === "erhverv";
+  const valgt = [...BOLIGER,...ERHVERV].find(x=>x.id === S.valgtId);
+  return `
+  ${demoBjaelke()}
+  <div class="panel fade">
+    <div class="progress">
+      <button class="btn-back" data-nav="tilbage">${ICON.tilbage} Tilbage til resultatet</button>
+      <div class="progress-track"><div class="progress-fill" style="width:95%"></div></div>
+      <span class="progress-label">Sidste trin</span>
+    </div>
+    <div class="panel-body">
+      <div class="q-head"><h2 data-focus>Hvor kan vi fange dig?</h2></div>
+      <p class="q-help">${valgt
+        ? `Du skriver om <strong>${valgt.adresse}, ${valgt.by}</strong>. Vi vender tilbage inden for ${CONFIG.svartid}.`
+        : `Vi gemmer dine ønsker og kontakter dig, så snart vi har noget, der passer — inden for ${CONFIG.svartid}, hvis der er noget nu.`}</p>
+
+      <form id="kontaktform" novalidate>
+        <div class="field">
+          <label for="f-navn">Navn</label>
+          <input id="f-navn" name="navn" type="text" autocomplete="name" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-mail">E-mail</label>
+            <input id="f-mail" name="mail" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-tlf">Mobil</label>
+            <input id="f-tlf" name="tlf" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+        ${erErhverv ? `
+        <div class="field-row">
+          <div class="field">
+            <label for="f-firma">Firmanavn</label>
+            <input id="f-firma" name="firma" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="f-cvr">CVR-nummer <span class="tiny">(valgfrit)</span></label>
+            <input id="f-cvr" name="cvr" type="text" inputmode="numeric" maxlength="8">
+          </div>
+        </div>` : ""}
+        <div class="field">
+          <label for="f-besked">Er der noget, vi skal vide? <span class="tiny">(valgfrit)</span></label>
+          <textarea id="f-besked" name="besked" placeholder="${erErhverv ? "Fx særlige krav til indretning, adgangsforhold eller lejeperiode." : "Fx at du gerne vil se boligen en hverdag efter kl. 16."}"></textarea>
+        </div>
+
+        <div class="safety">${ICON.skjold}<div>
+          <strong>Det koster ingenting, og du forpligter dig ikke</strong>
+          <p>Vi bruger kun dine oplysninger til at finde dig et lejemål — vi videresælger ingenting, og du kan altid bede om at blive slettet. Vi beder dig aldrig om MitID eller betaling for at se en bolig.</p>
+        </div></div>
+
+        <label class="consent" for="f-samtykke">
+          <input type="checkbox" id="f-samtykke" name="samtykke" required>
+          <span>Ja tak — gem mine ønsker, og kontakt mig, når I har noget, der passer. Jeg kan altid trække det tilbage.</span>
+        </label>
+        <p class="field-err" id="formfejl" hidden></p>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Send til ${erErhverv ? "Ole" : "Rickie"}</button>
+          <button class="btn btn-ghost" type="button" data-nav="tilbage">Tilbage</button>
+        </div>
+      </form>
+    </div>
+  </div>`;
+}
+
+/* ---------- kvittering ---------- */
+function viewTak(){
+  const s = S.svar;
+  const erErhverv = S.spor === "erhverv";
+  const p = erErhverv ? CONFIG.kontakt.ole : CONFIG.kontakt.rickie;
+  const byer = (s.by||[]).includes("*") ? "Hele Trekantområdet" : (s.by||[]).join(", ");
+  return `
+  ${demoBjaelke()}
+  <div class="panel fade"><div class="panel-body done">
+    <div class="done-mark">${ICON.ok}</div>
+    <h2 data-focus>Tak — vi har dine ønsker</h2>
+    <p class="lede" style="margin:9px auto 0">${p.navn} vender tilbage inden for ${CONFIG.svartid}. Du hører fra os, også hvis vi ikke har noget til dig lige nu.</p>
+
+    <div class="summary">
+      <p class="econ-cap" style="margin-bottom:9px">Det har vi noteret</p>
+      <dl>
+        <dt>${erErhverv?"Område":"Byer"}</dt><dd>${byer || "—"}</dd>
+        ${erErhverv
+          ? `<dt>Type</dt><dd>${KAT_LABEL[s.kategori]||"—"}</dd><dt>Størrelse</dt><dd>${(s.m2||"—").replace("-","–")} m²</dd>`
+          : `<dt>Størrelse</dt><dd>${["","1–2","2–3","3–4","4+"][s.vaerelser]||"—"} værelser</dd><dt>Budget</dt><dd class="num">Op til ${kr(s.budget)}</dd>`}
+        <dt>Indflytning</dt><dd>${({straks:"Hurtigst muligt","3mdr":"Inden for 3 mdr.","6mdr":"Om 3–6 mdr.",kigger:"Orienterer sig"})[s.tid]||"—"}</dd>
+      </dl>
+    </div>
+
+    <div class="person" style="max-width:320px;margin:0 auto">
+      <span class="avatar">${p.foto ? `<img src="${p.foto}" alt="">` : initialer(p.navn)}</span>
+      <span style="text-align:left">
+        <span class="person-role">${p.rolle}</span>
+        <span class="person-name">${p.navn}</span>
+        <a href="tel:${p.tlf}">${formatTlf(p.tlf)}</a>
+      </span>
+    </div>
+
+    <div class="foot"><button class="btn-text" data-nav="forfra">Søg efter noget andet</button></div>
+  </div></div>`;
+}
+
+const initialer = n => n.split(" ").map(x=>x[0]).join("").slice(0,2).toUpperCase();
+const formatTlf = t => t.replace(/(\d{2})(?=\d)/g,"$1 ").trim();
+
+/* ---------- interaktion ---------- */
+function bind(){
+  app.querySelectorAll("[data-spor]").forEach(el=>el.onclick = ()=>{
+    S.spor = el.dataset.spor; S.trin = 0; S.svar = {}; render();
+  });
+
+  app.querySelectorAll("[data-nav]").forEach(el=>el.onclick = ()=>{
+    const n = el.dataset.nav;
+    if(el.dataset.bolig) S.valgtId = el.dataset.bolig;
+    if(n === "tilbage") gaaTilbage();
+    if(n === "frem")    gaaFrem();
+    if(n === "kontakt"){ S.trin = "kontakt"; render(); }
+    if(n === "forfra"){ S = { spor:null, trin:0, svar:{}, resultat:null, valgtId:null, sendt:false }; render(); }
+  });
+
+  const liste = trinListe();
+  const t = typeof S.trin === "number" ? liste[S.trin] : null;
+
+  app.querySelectorAll(".chip[data-val]").forEach(el=>el.onclick = ()=>{
+    if(!t) return;
+    const raa = el.dataset.val;
+    const val = t.id === "vaerelser" ? Number(raa) : raa;
+
+    if(t.type === "single"){
+      S.svar[t.id] = val;
+      el.setAttribute("aria-pressed","true");
+      setTimeout(gaaFrem, 170);
+      return;
+    }
+    let cur = S.svar[t.id] || [];
+    if(t.alle && raa === t.alle.v)      cur = cur.includes(raa) ? [] : [raa];
+    else if(cur.includes(raa))          cur = cur.filter(x=>x !== raa);
+    else                                cur = [...cur.filter(x=>x !== (t.alle&&t.alle.v)), raa];
+    if(t.max && cur.length > t.max) cur = cur.slice(-t.max);
+    S.svar[t.id] = cur;
+    render();
+  });
+
+  app.querySelectorAll(".chip[data-sub]").forEach(el=>el.onclick = ()=>{
+    S.svar[el.dataset.sub] = el.dataset.val;
+    render();
+    const alleBesvaret = t && t.underspoergsmaal && t.underspoergsmaal.every(u=>S.svar[u.id] !== undefined);
+    if(alleBesvaret) setTimeout(()=>{ const b = app.querySelector('[data-nav="frem"]'); if(b) b.focus(); }, 60);
+  });
+
+  const slider = app.querySelector("#budget-slider");
+  if(slider){
+    S.svar.budget = S.svar.budget ?? Number(slider.value);
+    slider.oninput = ()=>{
+      S.svar.budget = Number(slider.value);
+      const vis = app.querySelector("#budget-vis");
+      vis.textContent = new Intl.NumberFormat("da-DK").format(slider.value);
+      vis.nextElementSibling.textContent = "kr. om måneden" + (Number(slider.value) >= Number(slider.max) ? " eller mere" : "");
+    };
+  }
+
+  const form = app.querySelector("#kontaktform");
+  if(form) form.onsubmit = send;
+}
+
+function gaaFrem(){
+  const liste = trinListe();
+  if(typeof S.trin !== "number") return;
+  if(!kanFortsaette(liste[S.trin])) return;
+  S.trin = (S.trin + 1 >= liste.length) ? "res" : S.trin + 1;
+  render();
+}
+function gaaTilbage(){
+  const liste = trinListe();
+  if(S.trin === "kontakt")      S.trin = "res";
+  else if(S.trin === "res")     S.trin = liste.length - 1;
+  else if(S.trin === 0)         S.spor = null;
+  else if(typeof S.trin === "number") S.trin -= 1;
+  render();
+}
+
+async function send(e){
+  e.preventDefault();
+  const form = e.target;
+  const fejl = app.querySelector("#formfejl");
+  const data = Object.fromEntries(new FormData(form));
+
+  const mangler = [...form.querySelectorAll("[required]")].find(f=>!f.value || (f.type === "checkbox" && !f.checked));
+  if(mangler){
+    fejl.textContent = mangler.type === "checkbox"
+      ? "Sæt lige flueben i, at vi må gemme dine ønsker."
+      : "Udfyld " + form.querySelector(`label[for="${mangler.id}"]`).textContent.split("(")[0].trim().toLowerCase() + ", så vi kan fange dig.";
+    fejl.hidden = false;
+    mangler.focus();
+    return;
+  }
+  fejl.hidden = true;
+
+  const knap = form.querySelector('button[type="submit"]');
+  knap.disabled = true; knap.textContent = "Sender …";
+
+  const payload = {
+    spor: S.spor, oensker: S.svar, valgtLejemaal: S.valgtId || null,
+    kontakt: data, tidspunkt: new Date().toISOString(), kilde: "Boligmatch"
+  };
+
+  try{
+    if(CONFIG.endpoint){
+      const svar = await fetch(CONFIG.endpoint, {
+        method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload)
+      });
+      if(!svar.ok) throw new Error("HTTP " + svar.status);
+    }
+    S.sendt = true; S.trin = "tak"; render();
+  }catch(err){
+    knap.disabled = false; knap.textContent = "Prøv igen";
+    fejl.innerHTML = `Vi kunne ikke sende din henvendelse lige nu. Prøv igen — eller ring til ${CONFIG.kontakt.ole.navn} på <a href="tel:${CONFIG.kontakt.ole.tlf}">${formatTlf(CONFIG.kontakt.ole.tlf)}</a>.`;
+    fejl.hidden = false;
+  }
+}
+
+/* ---------- tillidsbjælke ---------- */
+function fyldTillid(){
+  const p = document.getElementById("people");
+  p.innerHTML = [CONFIG.kontakt.ole, CONFIG.kontakt.rickie].map(k=>`
+    <div class="person">
+      <span class="avatar">${k.foto ? `<img src="${k.foto}" alt="">` : initialer(k.navn)}</span>
+      <span>
+        <span class="person-role">${k.rolle}</span>
+        <span class="person-name">${k.navn}</span>
+        <a href="tel:${k.tlf}">${formatTlf(k.tlf)}</a>
+      </span>
+    </div>`).join("");
+  document.getElementById("svartid-1").textContent = CONFIG.svartid;
+}
+
+/* ---------- højde til iframe-indlejring ---------- */
+function meldHoejde(){
+  if(window.parent === window) return;
+  requestAnimationFrame(()=>{
+    const h = document.documentElement.scrollHeight;
+    window.parent.postMessage({ type:"boligmatch:hoejde", hoejde:h }, "*");
+  });
+}
+window.addEventListener("resize", meldHoejde);
+
+fyldTillid();
+render();
+</script>
